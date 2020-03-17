@@ -1,0 +1,23 @@
+bash-4.2$ python3.4 RunAnalysis.py
+Please enter a comma-seperated list of decay chains.
+Use '+' to add data sets together.
+Write 'text' if you would prefer to read a list from 'input.txt':
+Zee, Zmumu
+
+Would you like to run in fast mode to only analyse 1% of data? (yes/no)
+yes
+Analysing Zee...
+(TFile *) 0x2eae170
+(TTree *) 0x30a5db0
+(CLoop *) 0x3a632e0
+Efficiency - electrons:0.981119
+Efficiency - muons:0.546871
+7
+Analysing Zmumu...
+(TFile *) 0x4762860
+(TTree *) 0x30e2d20
+(CLoop *) 0x2c6f680
+Efficiency - electrons:-nan
+Efficiency - muons:0.99858
+8
+bash-4.2$ 

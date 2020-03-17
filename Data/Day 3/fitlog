@@ -1,0 +1,731 @@
+bash-4.2$ root
+   ------------------------------------------------------------
+  | Welcome to ROOT 6.18/04                  https://root.cern |
+  |                               (c) 1995-2019, The ROOT Team |
+  | Built for linuxx8664gcc on Sep 11 2019, 15:38:23           |
+  | From tags/v6-18-04@v6-18-04                                |
+  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
+   ------------------------------------------------------------
+
+root [0] TFile *f=new TFile("2lep_fast.root");
+root [1] f
+(TFile *) 0x29c9b00
+root [2] TH1F *h = (TH1F*)f->Get("invariant_mass_60");
+root [3] h
+(TH1F *) 0x24b5bb0
+root [4] Double_t lorentz(Double_t *x, Double_t *p) {
+root (cont'ed, cancel with .@) [5]return (0.5*p[0]*p[1]/TMath::Pi())/TMath::Max(1.e-10,(x[0]-p[2])*(x[0]-p[2])+0.25*p[1]*p[1]);
+root (cont'ed, cancel with .@) [6]}
+root [7] lorentz({1},{0,0,0})
+ROOT_prompt_7:1:1: error: no matching function for call to 'lorentz'
+lorentz({1},{0,0,0})
+^~~~~~~
+ROOT_prompt_4:1:10: note: candidate function not viable: no known conversion from 'int' to 'Double_t *'
+      (aka 'double *') for 1st argument
+Double_t lorentz(Double_t *x, Double_t *p) {
+         ^
+root [8] lorentz({1.0},{0.0,0.0,0.0})
+ROOT_prompt_8:1:1: error: no matching function for call to 'lorentz'
+lorentz({1.0},{0.0,0.0,0.0})
+^~~~~~~
+ROOT_prompt_4:1:10: note: candidate function not viable: no known conversion from 'double' to 'Double_t *'
+      (aka 'double *') for 1st argument
+Double_t lorentz(Double_t *x, Double_t *p) {
+         ^
+root [9] lorentz(&1.0,{0.0,0.0,0.0})
+ROOT_prompt_9:1:9: error: cannot take the address of an rvalue of type 'double'
+lorentz(&1.0,{0.0,0.0,0.0})
+        ^~~~
+root [10] lorentz([1.0],[0.0,0.0,0.0])
+ROOT_prompt_10:1:10: error: expected variable name or 'this' in lambda capture list
+lorentz([1.0],[0.0,0.0,0.0])
+         ^
+<<< cling interactive line includer >>>:1:1: error: expected '}'
+input_line_19:1:43: note: to match this '{'
+void __cling_Un1Qu310(void* vpClingValue) {
+                                          ^
+root [11] Double_t a[1]={1.0};
+root [12] a
+(Double_t [1]) { 1.0000000 }
+root [13] Double_t b[3]={1.0,0.0,1.0};
+root [14] b
+(Double_t [3]) { 1.0000000, 0.0000000, 1.0000000 }
+root [15] lorentz(a,b)
+(double) 0.0000000
+root [16] a[0]=0.5
+(double) 0.50000000
+root [17] lorentz(a,b)
+(double) 0.0000000
+root [18] b={1.0,0.0,20.0};
+ROOT_prompt_18:1:2: error: array type 'Double_t [3]' is not assignable
+b={1.0,0.0,20.0};
+~^
+root [19] b[2]=20.0;
+root [20] lorentz(a,b)
+(double) 0.0000000
+root [21] b[0]=200.0
+(double) 200.00000
+root [22] lorentz(a,b)
+(double) 0.0000000
+root [23] b
+(Double_t [3]) { 200.00000, 0.0000000, 20.000000 }
+root [24] a[0]=0.0;
+root [25] lorentz(a,b)
+(double) 0.0000000
+root [26] 0.5*b[0]*b[1]/TMath::Pi())/TMath::Max(1.e-10,(a[0]-b[2])*(a[0]-b[2])+0.25*b[1]*b[1])
+ROOT_prompt_26:1:26: error: expected ';' after expression
+0.5*b[0]*b[1]/TMath::Pi())/TMath::Max(1.e-10,(a[0]-b[2])*(a[0]-b[2])+0.2...
+                         ^
+                         ;
+ROOT_prompt_26:1:26: error: expected expression
+root [27] Double_t z=0.5*b[0]*b[1]/TMath::Pi())/TMath::Max(1.e-10,(a[0]-b[2])*(aROOT_prompt_27:1:37: error: expected ';' at end of declaration
+Double_t z=0.5*b[0]*b[1]/TMath::Pi())/TMath::Max(1.e-10,(a[0]-b[2])*(a[0...
+                                    ^
+                                    ;
+root [28] Double_t z=(0.5*b[0]*b[1]/TMath::Pi())/TMath::Max(1.e-10,(a[0]-b[2])*((double) 0.00000001]*b[1])
+root [29] z
+(double) 0.0000000
+root [30] b[1]=0.5
+(double) 0.50000000
+root [31] z=(0.5*b[0]*b[1]/TMath::Pi())/TMath::Max(1.e-10,(a[0]-b[2])*(a[0]-b[2](double) 0.039782520
+root [32] b
+(Double_t [3]) { 200.00000, 0.50000000, 20.000000 }
+root [33] b[1]=2.0
+(double) 2.0000000
+root [34] b[3]=2.0
+ROOT_prompt_34:1:1: warning: array index 3 is past the end of the array (which contains 3 elements)
+      [-Warray-bounds]
+b[3]=2.0
+^ ~
+ROOT_prompt_13:1:1: note: array 'b' declared here
+Double_t b[3]={1.0,0.0,1.0};
+^
+(double) 2.0000000
+root [35] b[2]=2.0
+(double) 2.0000000
+root [36] b
+(Double_t [3]) { 200.00000, 2.0000000, 2.0000000 }
+root [37] a
+(Double_t [1]) { 0.0000000 }
+root [38] lorentz(a,b)
+(double) 12.732395
+root [39] Double_t bckg(Double_t *x, Double_t *p) {
+root (cont'ed, cancel with .@) [40]return p[0]+p[1]*x[0]+p[2]*x[0]*x[0];
+root (cont'ed, cancel with .@) [41]}
+root [42] bckg(a,b)
+(double) 200.00000
+root [43] bckg(&(a[0]+3.0),b)
+ROOT_prompt_43:1:6: error: cannot take the address of an rvalue of type 'double'
+bckg(&(a[0]+3.0),b)
+     ^ ~~~~~~~~
+root [44] Double_t c[1]={3.0}
+(Double_t [1]) { 3.0000000 }
+root [45] bckg(c,b)
+(double) 224.00000
+root [46] Double_t q[6];
+root [47] q
+(Double_t [6]) { 0.0000000, 0.0000000, 0.0000000, 0.0000000, 0.0000000, 0.0000000 }
+root [48] for(int i=0;i<3;i++) q[i]=p[i];
+input_line_56:2:3: error: use of undeclared identifier 'p'
+ (p[((*(int*)0x7ffeb17c308c))])
+  ^
+Error in <HandleInterpreterException>: Error evaluating expression (p[((*(int*)0x7ffeb17c308c))]).
+Execution of your code was aborted.
+root [49] for(int i=0;i<3;i++) {q[i]=p[i];}
+input_line_58:2:3: error: use of undeclared identifier 'p'
+ (p[((*(int*)0x7ffeb17c308c))])
+  ^
+Error in <HandleInterpreterException>: Error evaluating expression (p[((*(int*)0x7ffeb17c308c))]).
+Execution of your code was aborted.
+root [50] for(int i=0;i<3;i++) {q[i]=b[i];}
+root [51] q
+(Double_t [6]) { 200.00000, 2.0000000, 2.0000000, 0.0000000, 0.0000000, 0.0000000 }
+root [52] q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+ROOT_prompt_52:1:2: error: array type 'Double_t [6]' is not assignable
+q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+~^
+root [53] q[0]=10.0
+(double) 10.000000
+root [54] q{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+ROOT_prompt_54:1:2: error: expected ';' after expression
+q{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+ ^
+ ;
+ROOT_prompt_54:1:52: error: expected ';' after expression
+q{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+                                                   ^
+                                                   ;
+root [55] q{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0};
+ROOT_prompt_55:1:2: error: expected ';' after expression
+q{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0};
+ ^
+ ;
+ROOT_prompt_55:1:52: error: expected ';' after expression
+q{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0};
+                                                   ^
+                                                   ;
+root [56] q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0};
+ROOT_prompt_56:1:2: error: array type 'Double_t [6]' is not assignable
+q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0};
+~^
+root [57] q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+ROOT_prompt_57:1:2: error: array type 'Double_t [6]' is not assignable
+q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+~^
+root [58] q
+(Double_t [6]) { 10.000000, 2.0000000, 2.0000000, 0.0000000, 0.0000000, 0.0000000 }
+root [59] q=*{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+ROOT_prompt_59:1:4: error: expected expression
+q=*{10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+   ^
+root [60] q=80000.0
+ROOT_prompt_60:1:2: error: array type 'Double_t [6]' is not assignable
+q=80000.0
+~^
+root [61] q[1]=80000.0
+(double) 80000.000
+root [62] q[2]=-1.e-3
+(double) -0.0010000000
+root [63] q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+ROOT_prompt_63:1:2: error: array type 'Double_t [6]' is not assignable
+q={10.0,80000.0,-1.e-3,800.0,93700.0-86600.0,90000.0}
+~^
+root [64] q[3]=800.0
+(double) 800.00000
+root [65] q[4]=93700.0-86600.0
+(double) 7100.0000
+root [66] q[5]=90000.0
+(double) 90000.000
+root [67] a[0]=80000.0
+(double) 80000.000
+root [68] lorentz(a,&q[3])
+(double) 0.0080282416
+root [69] a[0]=90000.0
+(double) 90000.000
+root [70] q
+(Double_t [6]) { 10.000000, 80000.000, -0.0010000000, 800.00000, 7100.0000, 90000.000 }
+root [71] a[0]=100000.0
+(double) 100000.00
+root [72] lorentz(a,&q[3])
+(double) 0.0080282416
+root [73] a[0]=90001.0
+(double) 90001.000
+root [74] lorentz(a,&q[3])
+(double) 0.071731800
+root [75] a[0]=90000.0
+(double) 90000.000
+root [76] lorentz(a,&q[3])
+(double) 0.071731805
+root [77] z=(0.5*q[3]*q[4]/TMath::Pi())/TMath::Max(1.e-10,(a[0]-q[5])*(a[0]-q[5](double) 0.071731805
+root [78] (a[0]-q[5])*(a[0]-q[5])+0.25*q[4]*q[4]
+(double) 12602500.
+root [79] q[3]*=10000.0
+(double) 8000000.0
+root [80] lorentz(a,&q[3])
+(double) 717.31805
+root [81] q
+(Double_t [6]) { 10.000000, 80000.000, -0.0010000000, 8000000.0, 7100.0000, 90000.000 }
+root [82] Double_t fitfunc(Double_t *x, Double_t *p) {return bckg(x,p)+lorentz(x,&p[3]);}
+root [83] fitfunc(a,q)
+(double) 7.1919007e+09
+root [84] q
+(Double_t [6]) { 10.000000, 80000.000, -0.0010000000, 8000000.0, 7100.0000, 90000.000 }
+root [85] q[2]*=1.e-8
+(double) -1.0000000e-11
+root [86] fitfunc(a,q)
+(double) 7.2000007e+09
+root [87] q[1]*=1.e-8
+(double) 0.00080000000
+root [88] fitfunc(a,q)
+(double) 799.23705
+root [89] h
+(TH1F *) 0x24b5bb0
+root [90] f
+(TFile *) 0x29c9b00
+root [91] TF1 *fit=new TF1("fit",fitfunc,60000,120000,6)
+(TF1 *) 0x3161730
+root [92] h->Fit("fit");
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=34514.2 FROM HESSE     STATUS=FAILED         17 CALLS         374 TOTAL
+                     EDM=9.94822e-15    STRATEGY= 1  ERROR MATRIX UNCERTAINTY 100.0 per cent
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0          -3.80225e+02   1.85728e-01   1.68482e-02   1.96494e-08
+   2  p1           9.79430e-03   1.77706e-06   1.61205e-07  -2.25675e-04
+   3  p2          -5.60048e-08   1.61627e-11   1.46619e-12  -3.22563e+01
+   4  p3          -5.25473e+06   4.24264e-01  -0.00000e+00   0.00000e+00
+   5  p4           0.00000e+00   1.41421e+00  -0.00000e+00   0.00000e+00
+   6  p5           0.00000e+00   1.41421e+00  -0.00000e+00   0.00000e+00
+root [93] fit->SetParameter(0,q[0]);
+root [94] fit->SetParameter(1,q[1])
+root [95] fit->SetParameter(2,q[2])
+root [96] fof(int i=0;i<6;i++) {fit->SetParameter(i,q[i]);}
+ROOT_prompt_96:1:9: error: expected '(' for function-style cast or type construction
+fof(int i=0;i<6;i++) {fit->SetParameter(i,q[i]);}
+    ~~~ ^
+root [97] for(int i=0;i<6;i++) {fit->SetParameter(i,q[i]);}
+root [98] h->Fit("fit");
+ FCN=1313.31 FROM MIGRAD    STATUS=CONVERGED     322 CALLS         323 TOTAL
+                     EDM=3.27936e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.3 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           2.16470e+02   8.68705e+00  -1.42769e-02  -3.64546e-03
+   2  p1          -4.94410e-03   2.06981e-04   4.35408e-07  -3.41148e+02
+   3  p2           2.59152e-08   1.13876e-09  -2.62300e-12  -3.32401e+07
+   4  p3          -7.99110e+06   5.26947e+04   1.42130e+02   2.46717e-08
+   5  p4          -6.07056e+03   5.26591e+01   4.79365e-02   7.85698e-06
+   6  p5           8.99596e+04   1.98412e+01  -8.36605e-02  -2.87896e-05
+root [99] TFile *f2=new TFile("Day 2/ATLAS/cones2/2lep.root");
+root [100] f2
+(TFile *) 0x446b410
+root [101] TH1F *h2=f2->Get("invariant_mass")
+ROOT_prompt_101:1:7: error: cannot initialize a variable of type 'TH1F *' with an rvalue of type 'TObject *'
+TH1F *h2=f2->Get("invariant_mass")
+      ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+root [102] TH1F *h2=(TH1F*)f2->Get("invariant_mass")
+(TH1F *) 0x4506c80
+root [103] h2->Fit("fit")
+ FCN=380216 FROM MIGRAD    STATUS=CONVERGED     493 CALLS         494 TOTAL
+                     EDM=1.97243e-08    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.9 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0          -1.40589e+02   8.86183e-01  -7.98038e-04   4.60075e-05
+   2  p1           3.96809e-03   6.44358e-05   1.31051e-08   4.58093e+00
+   3  p2          -1.94658e-08   3.55181e-10  -6.53232e-14   1.48332e+06
+   4  p3          -1.78726e+09   1.02499e+06  -3.19467e+03   1.69531e-10
+   5  p4          -5.28232e+03   4.08814e+00   4.83205e-03  -1.72962e-05
+   6  p5           8.99360e+04   2.31105e+00  -3.97592e-03   2.89666e-05
+(TFitResultPtr) <nullptr TFitResult>
+root [104] TFitEditor::DoFit - using function fit  0x44b42f0
+ FCN=46474.4 FROM MIGRAD    STATUS=CONVERGED     367 CALLS         368 TOTAL
+                     EDM=1.94949e-08    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.8 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0          -1.37930e+02   5.27132e+00   5.20795e-03** at limit **
+   2  p1           1.46069e-01   1.57162e-03   5.87351e-07  -6.62265e-01
+   3  p2          -2.02403e-06   1.55481e-08  -3.80037e-12  -6.11716e+04
+   4  p3          -1.99369e+09   1.64062e+06   1.12769e+03   2.32013e-10
+   5  p4          -6.00248e+03   6.47999e+00   3.48528e-03  -3.29363e-05
+   6  p5           9.00694e+04   2.32021e+00   1.15656e-03   6.60299e-06
+TFitEditor::DoFit - using function fit  0x49c5190
+ FCN=46474.4 FROM MIGRAD    STATUS=CONVERGED      77 CALLS          78 TOTAL
+                     EDM=1.68644e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0          -1.37930e+02   5.26462e+00   3.58123e-01** at limit **
+   2  p1           1.46069e-01   1.57136e-03   1.65252e-05   1.09879e+00
+   3  p2          -2.02403e-06   1.55454e-08   1.72156e-10   1.05501e+05
+   4  p3          -1.99369e+09   1.65476e+06   9.50668e+02  -1.35735e-10
+   5  p4          -6.00248e+03   6.46052e+00   4.57208e-01  -1.96260e-05
+   6  p5           9.00694e+04   2.34646e+00   2.26689e-01   4.29534e-06
+TFitEditor::DoFit - using function fit  0x4494de0
+ FCN=46473.3 FROM MIGRAD    STATUS=CONVERGED     180 CALLS         181 TOTAL
+                     EDM=1.87844e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   1.1 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0          -1.20930e+02   1.71520e+01  -2.45617e-03** at limit **
+   2  p1           1.45679e-01   1.57169e-03   4.69143e-08  -1.42464e-01
+   3  p2          -2.02186e-06   1.55482e-08  -2.51930e-13  -1.24487e+04
+   4  p3          -1.99371e+09   1.65615e+06  -8.29310e+01  -2.17512e-11
+   5  p4          -6.00251e+03   6.46380e+00  -3.10287e-06   1.04852e-05
+   6  p5           9.00694e+04   2.35037e+00   4.87942e-04   1.16626e-05
+TFitEditor::DoFit - using function fit  0x49629c0
+ FCN=46473.3 FROM MIGRAD    STATUS=CONVERGED      77 CALLS          78 TOTAL
+                     EDM=1.39628e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0          -1.20930e+02   1.72571e+01   1.74091e-01** at limit **
+   2  p1           1.45679e-01   1.57135e-03   1.65250e-05   2.10612e-01
+   3  p2          -2.02186e-06   1.55454e-08   1.72154e-10   2.09163e+04
+   4  p3          -1.99371e+09   1.65472e+06   9.50674e+02  -2.54172e-11
+   5  p4          -6.00251e+03   6.46047e+00   4.57203e-01  -7.11100e-06
+   6  p5           9.00694e+04   2.34645e+00   2.26686e-01   6.63889e-06
+h2->Fit("fit")
+ FCN=35383.4 FROM MIGRAD    STATUS=CONVERGED     269 CALLS         270 TOTAL
+                     EDM=5.02236e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.1 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.56250e+05   3.51971e+03  -9.80255e+00  -3.51975e-05
+   2  p1          -8.04048e+00   8.09645e-02   2.09523e-04  -3.02257e+00
+   3  p2           4.35775e-05   4.51207e-07  -1.10618e-09  -2.64709e+05
+   4  p3          -2.29558e+09   3.66308e+06  -4.68011e+03  -6.94084e-11
+   5  p4          -6.73694e+03   1.03781e+01  -2.08232e-02   1.97315e-04
+   6  p5           9.00344e+04   2.33064e+00   8.01828e-03   3.77398e-04
+(TFitResultPtr) <nullptr TFitResult>
+root [105] h2->Fit("fit")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=35383.4 FROM HESSE     STATUS=NOT POSDEF     40 CALLS         135 TOTAL
+                     EDM=1.52761e-08    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.56250e+05   1.11997e+02   2.68467e-01   1.67575e-06
+   2  p1          -8.04048e+00   2.08640e-03   2.88384e-06   1.44191e-01
+   3  p2           4.35775e-05   1.33628e-08   3.00431e-11   1.32911e+04
+   4  p3          -2.29558e+09   1.75866e+06   5.47308e+02   5.33159e-11
+   5  p4          -6.73694e+03   6.82338e+00   1.62316e-02   6.87405e-06
+   6  p5           9.00344e+04   2.24033e+00   7.49706e-03   2.90908e-06
+(TFitResultPtr) <nullptr TFitResult>
+root [106] h2->Fit("fit")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=35383.4 FROM HESSE     STATUS=NOT POSDEF     40 CALLS         120 TOTAL
+                     EDM=1.03084e-08    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.56250e+05   1.11998e+02   2.68467e-01   8.23824e-07
+   2  p1          -8.04048e+00   2.08640e-03   2.88384e-06   5.65889e-02
+   3  p2           4.35775e-05   1.33627e-08   3.00431e-11   4.18958e+03
+   4  p3          -2.29558e+09   1.75864e+06   5.47308e+02   4.58579e-11
+   5  p4          -6.73694e+03   6.82332e+00   1.62316e-02   7.54419e-06
+   6  p5           9.00344e+04   2.24033e+00   7.49706e-03  -1.55411e-07
+(TFitResultPtr) <nullptr TFitResult>
+root [107] h2->Fit("fit")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=35383.4 FROM HESSE     STATUS=NOT POSDEF     40 CALLS         120 TOTAL
+                     EDM=7.34369e-09    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.56250e+05   1.11998e+02   2.68467e-01   2.54711e-06
+   2  p1          -8.04048e+00   2.08641e-03   2.88384e-06   2.13383e-01
+   3  p2           4.35775e-05   1.33629e-08   3.00431e-11   1.86040e+04
+   4  p3          -2.29558e+09   1.75855e+06   5.47308e+02   1.93429e-11
+   5  p4          -6.73694e+03   6.82325e+00   1.62316e-02   2.23905e-06
+   6  p5           9.00344e+04   2.24033e+00   7.49706e-03   2.89416e-06
+(TFitResultPtr) <nullptr TFitResult>
+root [108] *fit=new TF1("fit",fitfunc,0,120000)
+ROOT_prompt_108:1:5: error: no viable overloaded '='
+*fit=new TF1("fit",fitfunc,0,120000)
+~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/builddir/build/BUILD/root-6.18.04/builddir/include/TF1.h:403:9: note: candidate function not viable: no known conversion from 'TF1 *' to 'const TF1'
+      for 1st argument; dereference the argument with *
+   TF1 &operator=(const TF1 &rhs);
+        ^
+root [109] fit=new TF1("fit",fitfunc,0,120000)
+(TF1 *) 0x4485c30
+root [110] q
+(Double_t [6]) { 10.000000, 0.00080000000, -1.0000000e-11, 8000000.0, 7100.0000, 90000.000 }
+root [111] q[3]=2.29558e+9
+(double) 2.2955800e+09
+root [112] q[4]=6.67694e+3
+(double) 6676.9400
+root [113] q[4]=6.73694e+3
+(double) 6736.9400
+root [114] q[0]=0.0
+(double) 0.0000000
+root [115] q[1]=0.1714
+(double) 0.17140000
+root [116] q[2]=1.22449e-6
+(double) 1.2244900e-06
+root [117] q
+(Double_t [6]) { 0.0000000, 0.17140000, 1.2244900e-06, 2.2955800e+09, 6736.9400, 90000.000 }
+root [118] for (int i=0;i<6;i++){fit->SetParameter(i,q[i]);fit->SetParLimits(i,0.9*q[i],1.1*q[i]);}
+root [119] fit->SetParLimits(0,0.0,10000.0)
+root [120] h2->Fit("fit")
+Error in <Fit>: function fit has illegal number of parameters = 0
+(TFitResultPtr) <nullptr TFitResult>
+root [121] h2->Fit("fit")fit
+ROOT_prompt_121:1:15: error: expected ';' after expression
+h2->Fit("fit")fit
+              ^
+              ;
+root [122] fit
+(TF1 *) 0x4485c30
+root [123] fit->GetParameters()
+(Double_t *) nullptr
+root [124] fit=new TF1("fit",fitfunc,0,120000,6)
+(TF1 *) 0x4ad92e0
+root [125] fit->GetParameters()
+(Double_t *) 0x339a220
+root [126] *(fit->GetParameters())
+(double) 0.0000000
+root [127] for (int i=0;i<6;i++){fit->SetParameter(i,q[i]);fit->SetParLimits(i,0.9*q[i],1.1*q[i]);}
+root [128] fit->SetParLimits(0,0.0,10000.0)
+root [129] h2->Fit("fit")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=4.06054e+06 FROM MIGRAD    STATUS=CONVERGED     220 CALLS         221 TOTAL
+                     EDM=8.02087e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           5.55112e-13   3.74474e-03   1.20421e-03** at limit **
+   2  p1           1.54260e-01   3.95125e-08   2.11270e-03** at limit **
+   3  p2           1.10204e-06   4.11154e-13   2.54977e-03** at limit **
+   4  p3           2.06602e+09   4.09832e+02   1.85923e-03** at limit **
+   5  p4           6.06325e+03   2.39418e-03   2.62315e-03** at limit **
+   6  p5           8.95755e+04   1.79715e+00   1.96692e-04  -9.09462e-01
+(TFitResultPtr) <nullptr TFitResult>
+root [130] h2
+(TH1F *) 0x4506c80
+root [131] h2->GetName()
+(const char *) "invariant_mass"
+root [132] f2->GetName()
+(const char *) "Day 2/ATLAS/cones2/2lep.root"
+root [133] for (int i=0;i<6;i++){fit->SetParLimits(0,2.0*fit->GetParameter(i));} 
+ROOT_prompt_133:1:67: error: too few arguments to function call, expected 3, have 2
+for (int i=0;i<6;i++){fit->SetParLimits(0,2.0*fit->GetParameter(i));}
+                      ~~~~~~~~~~~~~~~~~                           ^
+/builddir/build/BUILD/root-6.18.04/builddir/include/TF1.h:658:4: note: 'SetParLimits' declared here
+   virtual void     SetParLimits(Int_t ipar, Double_t parmin, Double_t parmax);
+   ^
+root [134] for (int i=0;i<5;i++){fit->SetParLimits(i,0,2.0*fit->GetParameter(i))root [135] h2->Fit("fit")
+ FCN=105992 FROM MIGRAD    STATUS=CONVERGED     463 CALLS         464 TOTAL
+                     EDM=3.59758e-10    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.0 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           5.55112e-13   8.29272e-13  -1.09167e-14   0.00000e+00
+   2  p1           1.71263e-17   6.33481e-07   3.41550e-07** at limit **
+   3  p2           0.00000e+00   5.79065e-12   2.56888e-07** at limit **
+   4  p3           1.80937e+09   1.01861e+06  -5.82571e-07   6.86133e-02
+   5  p4           5.36405e+03   4.17392e+00   2.94008e-07  -2.96564e-02
+   6  p5           8.99823e+04   2.30216e+00   3.32661e-08  -5.82612e-03
+(TFitResultPtr) <nullptr TFitResult>
+root [136] for (int i=1;i<3;i++){fit->SetParLimits(i,-1,1);}
+root [137] h2->Fit("fit")
+ FCN=46465.5 FROM MIGRAD    STATUS=CONVERGED     397 CALLS         398 TOTAL
+                     EDM=5.29687e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.2 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           8.21246e-13   9.08026e-13  -2.18082e-11   0.00000e+00
+   2  p1           1.42905e-01   1.54665e-03   2.24257e-05   3.85063e+00
+   3  p2          -2.00641e-06   1.53619e-08  -2.47044e-10   3.75553e+05
+   4  p3           1.99380e+09   1.65451e+06   1.28757e-06   1.96724e+00
+   5  p4           6.00274e+03   6.57977e+00   9.03384e-07  -1.09241e+00
+   6  p5           9.00693e+04   2.35465e+00   7.09016e-06  -1.82743e+00
+(TFitResultPtr) <nullptr TFitResult>
+root [138] TF1 *fit_ctr=new TF1("fit2",fitfunc,85000,95000,6)
+(TF1 *) 0x4bd8180
+root [139] fit->GetParameters()
+(Double_t *) 0x339a220
+root [140] fit->GetParLimits()
+ROOT_prompt_140:1:19: error: too few arguments to function call, expected 3, have 0
+fit->GetParLimits()
+~~~~~~~~~~~~~~~~~ ^
+/builddir/build/BUILD/root-6.18.04/builddir/include/TF1.h:536:4: note: 'GetParLimits' declared here
+   virtual void     GetParLimits(Int_t ipar, Double_t &parmin, Double_t ...
+   ^
+root [141] fit->GetParLimit()
+ROOT_prompt_141:1:6: error: no member named 'GetParLimit' in 'TF1'
+fit->GetParLimit()
+~~~  ^
+root [142] fit->GetParLimits(3)
+ROOT_prompt_142:1:20: error: too few arguments to function call, expected 3, have 1
+fit->GetParLimits(3)
+~~~~~~~~~~~~~~~~~  ^
+/builddir/build/BUILD/root-6.18.04/builddir/include/TF1.h:536:4: note: 'GetParLimits' declared here
+   virtual void     GetParLimits(Int_t ipar, Double_t &parmin, Double_t ...
+   ^
+root [143] for (int i=0;i<6;i++){fit2->SetParameter(i,fit->GetParameter(i));}
+root [144] h2->Fit("fit2")
+ FCN=46465.5 FROM MIGRAD    STATUS=CONVERGED     128 CALLS         129 TOTAL
+                     EDM=2.13899e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           5.52317e-12   9.61460e-05   2.59319e-10   1.40290e-01
+   2  p1           1.42905e-01   1.57087e-03   1.65236e-05  -1.78529e+00
+   3  p2          -2.00641e-06   1.55438e-08   1.72139e-10  -1.58612e+05
+   4  p3           1.99380e+09   1.65461e+06   9.50720e+02  -1.78394e-10
+   5  p4           6.00274e+03   6.45945e+00   4.57167e-01  -1.24623e-04
+   6  p5           9.00693e+04   2.34638e+00   2.26662e-01  -8.99638e-05
+(TFitResultPtr) <nullptr TFitResult>
+root [145] h2->Fit("fit2")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=35383.4 FROM MIGRAD    STATUS=CONVERGED     195 CALLS         196 TOTAL
+                     EDM=4.61956e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.6 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           3.56250e+05   3.52305e+03  -2.09162e+00  -3.15347e-05
+   2  p1          -8.04047e+00   8.10351e-02   3.99916e-05  -3.72269e+00
+   3  p2           4.35775e-05   4.51596e-07  -1.96404e-10  -4.19109e+05
+   4  p3           2.29558e+09   3.67200e+06   5.46781e+03  -4.43723e-10
+   5  p4           6.73694e+03   1.03443e+01   1.23765e-02  -4.60219e-05
+   6  p5           9.00344e+04   2.30121e+00  -1.55679e-02  -4.07657e-04
+(TFitResultPtr) <nullptr TFitResult>
+root [146] TBrofatal error: cannot open file 'input_line_151': No such file or directory
+h->Fit("fit")
+root [147] h->Fit("fit")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=1948.03 FROM MIGRAD    STATUS=CONVERGED     816 CALLS         817 TOTAL
+                     EDM=7.00344e-07    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.0 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           8.21240e-13   9.08025e-13   3.77374e-10  -4.54747e-13
+   2  p1           1.79736e-04   1.60261e-05   1.96543e-07   7.62489e+02
+   3  p2          -2.11198e-09   1.39471e-10  -1.48317e-12   8.86168e+07
+   4  p3           7.24632e+06   4.16436e+04   3.22298e-06  -2.48008e+00
+   5  p4           5.45438e+03   4.15382e+01  -4.36811e-05   1.80795e-01
+   6  p5           8.99647e+04   2.04621e+01  -3.29301e-05   8.54255e-02
+(TFitResultPtr) <nullptr TFitResult>
+root [148] TFile *f3=new TFile("Day 3/Background graphs/Zee.root")
+(TFile *) 0x4da6cc0
+root [149] TH1F *h3=(TH1F*)f3->Get("invariant_mass_60")
+(TH1F *) 0x5131760
+root [150] h3->Fit("fit")
+Warning in <Fit>: Abnormal termination of minimization.
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=7.78217e+06 FROM MIGRAD    STATUS=FAILED        341 CALLS         342 TOTAL
+                     EDM=1.4158e+08    STRATEGY= 1  ERROR MATRIX UNCERTAINTY 100.0 per cent
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           8.21240e-13   6.88925e-15  -0.00000e+00   0.00000e+00
+   2  p1           6.84535e-03   1.00265e-05  -0.00000e+00   3.57748e+07
+   3  p2           5.11846e-08   9.28611e-11  -0.00000e+00   7.12321e+12
+   4  p3           2.31686e+08   1.07944e+05  -0.00000e+00   1.04197e+08
+   5  p4           2.30677e+03   1.56493e+00  -0.00000e+00   2.69052e+06
+   6  p5           8.97289e+04   2.29233e+00   0.00000e+00  -1.91839e+06
+(TFitResultPtr) <nullptr TFitResult>
+root [151] h3->Fit("fit")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=486202 FROM MIGRAD    STATUS=CONVERGED     444 CALLS         445 TOTAL
+                     EDM=3.72074e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.0 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           8.21240e-13   9.08025e-13  -5.75199e-11   5.82077e-11
+   2  p1           8.54953e-03   7.55251e-05  -1.58682e-07   8.21149e+00
+   3  p2          -1.24820e-07   6.66495e-10   1.27122e-12   8.34643e+05
+   4  p3           7.34482e+08   2.11721e+05  -2.14687e-07   1.02911e+00
+   5  p4           5.44778e+03   2.12597e+00   1.05393e-06   6.21727e-02
+   6  p5           9.00244e+04   1.03189e+00  -3.66612e-07  -2.08434e-01
+(TFitResultPtr) <nullptr TFitResult>
+root [152] Info in <TCanvas::Print>: pdf file /home/atlaslab3/ATLAS-Project/out/Day 3/Background graphs/MC_bckg_fit.pdf has been created
+h3->Fit("fit")
+ FCN=486202 FROM HESSE     STATUS=FAILED          3 CALLS          52 TOTAL
+                     EDM=2.78288e-09    STRATEGY= 1  ERROR MATRIX UNCERTAINTY 100.0 per cent
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           2.06207e-13   2.49717e-13  -1.79649e-01   1.74623e-10
+   2  p1           8.54953e-03   1.00264e-05  -1.97748e-10  -2.10933e+00
+   3  p2          -1.24820e-07   9.28412e-11  -1.72323e-15  -2.53328e+05
+   4  p3           7.34482e+08   1.74264e+05  -2.99980e-09   2.49582e-01
+   5  p4           5.44778e+03   1.70207e+00  -1.18577e-09  -7.20570e-02
+   6  p5           9.00244e+04   9.93302e-01   6.08138e-10  -1.98505e-01
+(TFitResultPtr) <nullptr TFitResult>
+root [153] h3->Fit("fit")
+Info in <TCanvas::MakeDefCanvas>:  created default TCanvas with name c1
+ FCN=486202 FROM MIGRAD    STATUS=CONVERGED     326 CALLS         327 TOTAL
+                     EDM=1.45527e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           4.19235e-14   6.67171e-13   4.81498e-01  -3.02222e-10
+   2  p1           8.54953e-03   7.54794e-05   3.41383e-06  -7.33685e-01
+   3  p2          -1.24820e-07   6.66223e-10   3.16097e-11  -1.02251e+05
+   4  p3           7.34482e+08   2.12169e+05   3.75588e-05   1.21464e-01
+   5  p4           5.44778e+03   2.12912e+00   9.60728e-05   1.02513e-01
+   6  p5           9.00244e+04   1.03383e+00   3.75768e-05  -1.56336e-01
+(TFitResultPtr) <nullptr TFitResult>
+root [154] File *out=open("out/Day 3/Zee_fit_params.csv","w")
+ROOT_prompt_154:1:11: error: no matching function for call to 'open'
+File *out=open("out/Day 3/Zee_fit_params.csv","w")
+          ^~~~
+/usr/include/fcntl.h:173:12: note: candidate function not viable: no known conversion from 'const char [2]' to
+      'int' for 2nd argument
+extern int open (const char *__file, int __oflag, ...) __nonnull ((1));
+           ^
+root [155] File *out=fopen("out/Day 3/Zee_fit_params.csv","w")
+ROOT_prompt_155:1:11: error: cannot initialize an array element of type 'void *' with an rvalue of type 'FILE
+      *(*)(const char *__restrict, const char *__restrict)' (aka '_IO_FILE
+      *(*)(const char *__restrict, const char *__restrict)')
+File *out=fopen("out/Day 3/Zee_fit_params.csv","w")
+          ^~~~~
+root [156] FILE *out=open("out/Day 3/Zee_fit_params.csv","w")
+ROOT_prompt_156:1:11: error: no matching function for call to 'open'
+FILE *out=open("out/Day 3/Zee_fit_params.csv","w")
+          ^~~~
+/usr/include/fcntl.h:173:12: note: candidate function not viable: no known conversion from 'const char [2]' to
+      'int' for 2nd argument
+extern int open (const char *__file, int __oflag, ...) __nonnull ((1));
+           ^
+root [157] FILE *out=fopen("out/Day 3/Zee_fit_params.csv","w")
+(FILE *) nullptr
+root [158] FILE *out=fopen("out/Day 3/Zee_fit_params.txt","w")
+ROOT_prompt_158:1:7: error: redefinition of 'out'
+FILE *out=fopen("out/Day 3/Zee_fit_params.txt","w")
+      ^
+ROOT_prompt_157:1:7: note: previous definition is here
+FILE *out=fopen("out/Day 3/Zee_fit_params.csv","w")
+      ^
+root [159] out->close()
+ROOT_prompt_159:1:6: error: no member named 'close' in '_IO_FILE'
+out->close()
+~~~  ^
+root [160] TFitEditor::DoFit - using function fit  0x49629c0
+ FCN=486202 FROM MIGRAD    STATUS=CONVERGED     107 CALLS         108 TOTAL
+                     EDM=1.60676e-10    STRATEGY= 1  ERROR MATRIX UNCERTAINTY  11.7 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.11003e-12   7.39009e-13   2.77040e-01   0.00000e+00
+   2  p1           8.54953e-03   7.52720e-05   1.97258e-10  -4.60749e-01
+   3  p2          -1.24820e-07   6.64671e-10  -8.64013e-16  -6.25651e+04
+   4  p3           7.34482e+08   2.18339e+05  -9.13281e-10   8.12741e-02
+   5  p4           5.44778e+03   2.08796e+00  -3.65043e-09   3.68740e-02
+   6  p5           9.00244e+04   1.03866e+00   6.61813e-10  -7.99088e-02
+h->Fit("fit")
+ FCN=1948.03 FROM MIGRAD    STATUS=CONVERGED     716 CALLS         717 TOTAL
+                     EDM=2.11488e-08    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.0 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           4.19235e-14   6.67171e-13   4.42580e-13  -6.82121e-13
+   2  p1           1.79743e-04   1.62924e-05   1.31772e-08   5.76380e+01
+   3  p2          -2.11205e-09   1.41028e-10  -1.41323e-13   4.81069e+06
+   4  p3           7.24632e+06   4.10928e+04   1.68682e-07  -1.28781e+00
+   5  p4           5.45437e+03   4.16922e+01  -1.23311e-06   1.75862e-02
+   6  p5           8.99647e+04   2.04004e+01  -4.87220e-08  -3.04486e-02
+(TFitResultPtr) <nullptr TFitResult>
+root [161] h->Fit("fit")
+ FCN=1948.03 FROM MIGRAD    STATUS=CONVERGED      74 CALLS          75 TOTAL
+                     EDM=2.44895e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.62068e-14   7.16781e-13   5.00000e-01  -1.13687e-12
+   2  p1           1.79743e-04   1.58223e-05   3.83073e-08  -4.72837e+01
+   3  p2          -2.11205e-09   1.37670e-10   3.48431e-13  -6.68336e+06
+   4  p3           7.24632e+06   4.11257e+04   4.15704e-06   3.07120e-01
+   5  p4           5.45437e+03   4.15841e+01   1.17296e-04   2.16060e-03
+   6  p5           8.99647e+04   2.03316e+01   4.66233e-05  -2.49091e-02
+(TFitResultPtr) <nullptr TFitResult>
+root [162] h->Fit("fit")
+ FCN=1948.03 FROM MIGRAD    STATUS=CONVERGED      96 CALLS          97 TOTAL
+                     EDM=1.52106e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.06012e-12   7.21531e-13   5.00000e-01   3.41061e-12
+   2  p1           1.79743e-04   1.58229e-05   3.83073e-08   2.42713e+01
+   3  p2          -2.11205e-09   1.37685e-10   3.48456e-13   1.33269e+06
+   4  p3           7.24632e+06   4.11260e+04   4.15704e-06   3.82421e-01
+   5  p4           5.45437e+03   4.15848e+01   1.17296e-04   1.44890e-02
+   6  p5           8.99647e+04   2.03317e+01   4.66233e-05  -6.96776e-05
+(TFitResultPtr) <nullptr TFitResult>
+root [163] h->Fit("fit")
+ FCN=1948.03 FROM MIGRAD    STATUS=CONVERGED      99 CALLS         100 TOTAL
+                     EDM=5.32488e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.08171e-12   7.92614e-13   5.00000e-01   6.82121e-12
+   2  p1           1.79743e-04   1.60051e-05   3.83073e-08  -1.81563e+01
+   3  p2          -2.11205e-09   1.39264e-10   3.48468e-13  -2.73227e+06
+   4  p3           7.24632e+06   4.11894e+04   4.15704e-06   8.83881e-02
+   5  p4           5.45437e+03   4.16421e+01   1.17296e-04   3.75662e-03
+   6  p5           8.99647e+04   2.03386e+01   4.66233e-05  -7.05640e-03
+(TFitResultPtr) <nullptr TFitResult>
+root [164] h->Fit("fit")
+ FCN=1948.03 FROM MIGRAD    STATUS=CONVERGED      76 CALLS          77 TOTAL
+                     EDM=1.35017e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.02984e-12   9.59599e-13   5.00000e-01   1.13687e-12
+   2  p1           1.79743e-04   1.61938e-05   3.83073e-08   1.53051e+01
+   3  p2          -2.11205e-09   1.40927e-10   3.48437e-13   1.45724e+06
+   4  p3           7.24632e+06   4.12558e+04   4.15704e-06   1.50544e-01
+   5  p4           5.45437e+03   4.17021e+01   1.17296e-04   7.35832e-03
+   6  p5           8.99647e+04   2.03458e+01   4.66233e-05   1.49267e-03
+(TFitResultPtr) <nullptr TFitResult>
+root [165] h->Fit("fit")
+ FCN=1948.03 FROM MIGRAD    STATUS=CONVERGED     101 CALLS         102 TOTAL
+                     EDM=5.18628e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.10645e-12   8.19699e-13   5.00000e-01  -2.27374e-12
+   2  p1           1.79743e-04   1.61940e-05   3.83073e-08  -9.24588e+00
+   3  p2          -2.11205e-09   1.40939e-10   3.48463e-13  -1.17249e+06
+   4  p3           7.24632e+06   4.12558e+04   4.15704e-06   1.22594e-02
+   5  p4           5.45437e+03   4.17016e+01   1.17296e-04   1.52893e-03
+   6  p5           8.99647e+04   2.03458e+01   4.66233e-05  -3.04356e-03
+(TFitResultPtr) <nullptr TFitResult>
+root [166] 

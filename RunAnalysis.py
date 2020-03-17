@@ -20,7 +20,7 @@ def fastStr(fMode):
     else:
         return ""
 
-def runAnalysis(key, fast):
+def runAnalysis(key, fast, colourcode):
     """
     Function to run the analysis for a given decay chain labelled 'key'
     """
@@ -44,7 +44,7 @@ def runAnalysis(key, fast):
         lumStr = "%.5E" % (lumWeight)
 
     # launch the analysis script for the given data set
-    DrawC(filename,lumStr,fast)
+    DrawC(filename,lumStr,fast,colourcode)
 
     # move the output to a different directory
     os.system("mv outfile.root out/" + key + fastStr(fast) + ".root")
@@ -91,9 +91,10 @@ def combine(files, fast):
 chainsValid = False
 while (not chainsValid):
     print("Please enter a comma-seperated list of decay chains.")
+    print("Optional: specify histogram colour per chain (eg. Zee blue).")
     print("Use '+' to add data sets together.")
     print("Write 'text' if you would prefer to read a list from 'input.txt':")
-    chains, chainsValid = getInput()
+    chains, colourcodes, chainsValid = getInput()
     print()
 
 # if all decay chains are valid loop over series 
@@ -123,7 +124,7 @@ for i in range(len(chains)):
         if (chain in dataCombos.keys()):
             for subChain in dataCombos[chain]:
                 print(subChain)
-                runAnalysis(subChain, fastMode)
+                runAnalysis(subChain, fastMode, colourcodes[i])
             combine(dataCombos[chain], fastMode)
 
             # rename the outputted file to use the input key
@@ -133,7 +134,7 @@ for i in range(len(chains)):
             
         # otherwise run the analysis for the single file
         else:
-            runAnalysis(chain,fastMode)
+            runAnalysis(chain,fastMode,colourcodes[i])
 
     # combine chains in the series if it contains more than one chain
     if (len(chains[i])>1):

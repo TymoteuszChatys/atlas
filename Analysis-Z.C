@@ -17,7 +17,6 @@ size_t number_of_selected_e{}, number_of_selected_mu;
 double total_weight_sum_e{}, total_weight_sum_mu{};
 size_t total_number_of_e{}, total_number_of_mu{};
 
-double pt_cone_lower{100};
 
 void CLoop::Book() {
     // This function is where you "book" your histograms
@@ -211,7 +210,7 @@ void CLoop::Style(int colourcode) {
     
     h_lep_phi->GetXaxis()->SetTitle("Azimuthal angle of the leptons"); // label x axis
     h_lep_phi->GetYaxis()->SetTitle("Number of entries"); // label y axis
-    h_lep_phi->SetLineColor(colourcode); // set the line colour to red 
+    h_lep_phi->SetLineColor(colourcode); 100// set the line colour to red 
     
     //Invariant mass plots
     //Selected data
@@ -280,10 +279,9 @@ void CLoop::Style(int colourcode) {
     cout << "Efficiency - electrons: " << efficiency_e << endl;
     cout << "Efficiency - muons: " << efficiency_mu << endl << endl;
     
-    cout << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << endl;
-    cout << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << endl;
-    double cross_section_e = ((2*selected_weight_sum_e)-total_weight_sum_e)/(INTEGRATED_LUMINOSITY*efficiency_e);
-    double cross_section_mu = ((2*selected_weight_sum_mu)-total_weight_sum_mu)/(INTEGRATED_LUMINOSITY*efficiency_mu);
+    cout << number_of_selected_e << " : " << total_number_of_e - number_of_selected_e << endl;
+    double cross_section_e = ((2*number_of_selected_e)-total_number_of_e)/(INTEGRATED_LUMINOSITY*efficiency_e);
+    double cross_section_mu = ((2*number_of_selected_mu)-total_number_of_mu)/(INTEGRATED_LUMINOSITY*efficiency_mu);
     cout << "Cross section - electrons: " << cross_section_e << endl;
     cout << "Cross section - muons: " << cross_section_mu << endl;
 

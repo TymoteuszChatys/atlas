@@ -25,7 +25,7 @@ chainsValid = False
 while (not chainsValid):
     print("Please enter a comma-seperated list of decay chains.")
     print("Write 'text' if you would prefer to read a list from 'input.txt':")
-    chains, chainsValid = getInput()
+    chains, colourcodes, chainsValid = getInput()
     print()
 
 # iterate over sums of chains from user input

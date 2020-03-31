@@ -327,36 +327,59 @@ void CLoop::Style(int colourcode) {
     h_etcone20_m -> Write();
     h_invariant_mass_ee_60 -> Write();
     h_invariant_mass_mumu_60 -> Write();
-    
+    invariant_mass_background_ee -> Write();
+    invariant_mass_background_mumu -> Write();
+
+
     //Cross section calculations
     double INTEGRATED_LUMINOSITY = 10.064;
     double efficiency_e = selected_weight_sum_e/TOTAL_WEIGHT_E;
     double efficiency_mu = selected_weight_sum_mu/TOTAL_WEIGHT_MU;
-    cout << "Efficiency - electrons: " << efficiency_e << endl;
-    cout << "Efficiency - muons: " << efficiency_mu << endl << endl;
     
-
-    cout << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << endl;
-    cout << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << endl << endl;
-    
-
     double cross_section_e = (((selected_weight_sum_e)-(total_weight_sum_e - selected_weight_sum_e))/(INTEGRATED_LUMINOSITY*efficiency_e))/1000;
     double cross_section_mu = (((selected_weight_sum_mu)-(total_weight_sum_mu - selected_weight_sum_mu))/(INTEGRATED_LUMINOSITY*efficiency_mu))/1000;
     
-    cout << "Cross section - electrons: " << cross_section_e << endl;
-    cout << "Cross section - muons: " << cross_section_mu << endl << endl;
 
+    
+    std::ofstream outfile;
+    auto end = std::chrono::system_clock::now();
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-    cout<< "parameters: " <<std::endl
-        << "ptcone: " << pt_cone_lower << " rejected: " << pt  << std::endl
-        << "etcone: " << et_cone_higher << " rejected: " << et  << std::endl
-        << "invariant mass: " << mass_deviation << " rejected: " << mass  << std::endl
-        << "transverse mom: " << transverse_momentum_lower << " rejected: " << trans  << std::endl
-        << "phi: " << phi_range << " rejected: " << phi  << std::endl
+    std::cout << "Date: " << std::ctime(&end_time) << std::endl;
+    std::cout << "parameters: " 
+        << "ptcone: " << pt_cone_lower << " rejected: " << pt  << " "
+        << "etcone: " << et_cone_higher << " rejected: " << et  << " "
+        << "invariant mass: " << mass_deviation << " rejected: " << mass  << " "
+        << "transverse mom: " << transverse_momentum_lower << " rejected: " << trans  << " "
+        << "phi: " << phi_range << " rejected: " << phi  << " "
         << "eta: " << eta_range << " rejected: " << eta  << std::endl;
 
-    invariant_mass_background_ee -> Write();
-    invariant_mass_background_mumu -> Write();
+    std::cout << "Efficiency - electrons: " << efficiency_e << std::endl;
+    std::cout << "Efficiency - muons: " << efficiency_mu << std::endl << std::endl;
+
+    std::cout << "Cross section - electrons: " << cross_section_e << std::endl;
+    std::cout << "Cross section - muons: " << cross_section_mu << std::endl << std::endl;
+
+    std::cout << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << std::endl;
+    std::cout << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << std::endl << std::endl;
+
+    outfile.open("test.txt", std::ios_base::app); // append instead of overwrite
+    outfile << "Date: " << std::ctime(&end_time) << std::endl;
+    outfile << "parameters: " 
+        << "ptcone: " << pt_cone_lower << " rejected: " << pt  << " "
+        << "etcone: " << et_cone_higher << " rejected: " << et  << " "
+        << "invariant mass: " << mass_deviation << " rejected: " << mass  << " "
+        << "transverse mom: " << transverse_momentum_lower << " rejected: " << trans  << " "
+        << "phi: " << phi_range << " rejected: " << phi  << " "
+        << "eta: " << eta_range << " rejected: " << eta  << std::endl << std::endl; 
+
+    outfile << "Efficiency - electrons: " << efficiency_e 
+            << "  Efficiency - muons: " << efficiency_mu << std::endl << std::endl;
+        
+    outfile << "Cross section - electrons: " << cross_section_e
+            << "  Cross section - muons: " << cross_section_mu << std::endl << std::endl;
+
+    outfile << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << std::endl;
+    outfile << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << std::endl << std::endl;
 }
 #endif // End header guard
-

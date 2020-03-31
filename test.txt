@@ -1,0 +1,96 @@
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 47
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 224
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 420
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 732
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Date: Tue Mar 31 16:26:32 2020
+
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 47
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0158606
+Efficiency - muons: 0.0168674
+
+Cross section - electrons: 1882.67
+Cross section - muons: 1866.91
+
+Date: Tue Mar 31 16:27:55 2020
+
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 224
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0566243
+Efficiency - muons: 0.0635037
+
+Cross section - electrons: 1882.59
+Cross section - muons: 1856.84
+
+Date: Tue Mar 31 16:29:56 2020
+
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 420
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0822552
+Efficiency - muons: 0.0927775
+
+Cross section - electrons: 1882.51
+Cross section - muons: 1852.46
+
+Date: Tue Mar 31 16:33:01 2020
+
+parameters: 
+ptcone: 1e+09 rejected: 0
+etcone: 90000 rejected: 0
+invariant mass: 600 rejected: 732
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.125697
+Efficiency - muons: 0.142024
+
+Cross section - electrons: 1884.49
+Cross section - muons: 1849.31
+

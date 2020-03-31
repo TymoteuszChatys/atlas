@@ -6,6 +6,7 @@ sys.path.insert(0, "backend") # allow code to be imported from subdirectory
 
 import ROOT as r
 import os
+import datetime as dt
 from DrawC import DrawC
 from getInput import getInput
 from infofile import infos
@@ -80,7 +81,7 @@ def combine(files, fast):
 
     # save the combined histograms to a file
     name = "_".join(files) # name of output file
-    totFile = r.TFile("out/"+ name + fastStr(fast) + ".root","RECREATE")
+    totFile = r.TFile("out/"+ name + fastStr(fast) + dt.datetime.now().strftime('_%d_%H%M') + ".root","RECREATE")
     for hist in totHist:
         hist.Write()
     totFile.Close()

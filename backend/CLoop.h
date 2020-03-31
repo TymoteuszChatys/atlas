@@ -20,6 +20,9 @@
 #include <time.h>
 #include <math.h>
 #include <iostream>
+#include <fstream>
+#include <chrono>
+#include <ctime> 
 
 class CLoop {
    void Style(int colourcode); 

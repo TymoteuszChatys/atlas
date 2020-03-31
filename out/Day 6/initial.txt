@@ -1,0 +1,31 @@
+Analysing Zee...
+(TFile *) 0x4a54a70
+(TTree *) 0x4c3e2b0
+(CLoop *) 0x56248d0
+Efficiency - electrons: 0.241377
+Efficiency - muons: 0.000295036
+
+4.73826e+06:89390.1
+5791.9:4.82186e+06
+
+Cross section - electrons: 1913.73
+Cross section - muons: 332.377
+
+677
+
+
+Analysing Zmumu...
+(TFile *) 0x48a7140
+(TTree *) 0x4ab8c40
+(CLoop *) 0x5525a60
+Efficiency - electrons: 2.87244e-08
+Efficiency - muons: 0.263891
+
+0.563863:0.550962
+5.18048e+06:-5.18048e+06
+
+Cross section - electrons: 44.6271
+Cross section - muons: 1947.91
+
+708
+

@@ -17,18 +17,7 @@ size_t number_of_selected_e{}, number_of_selected_mu;
 double total_weight_sum_e{}, total_weight_sum_mu{};
 size_t total_number_of_e{}, total_number_of_mu{};
 
-int pt,et,mass,trans,phi,eta{};
-
-double mass_Z{91.1876};
-
-// CUTS APPLIED
-double pt_cone_lower{1000000000};
-double et_cone_higher{90000};
-double mass_deviation{600};
-double transverse_momentum_lower{0};
-double phi_range{3.1415926};
-double eta_range{2.8};
-
+double pt_cone_lower{100};
 
 void CLoop::Book() {
     // This function is where you "book" your histograms
@@ -60,7 +49,7 @@ void CLoop::Book() {
     invariant_mass_background_ee = new TH1F("invariant_mass_background_ee","Invariant mass of the system (ee)",400,0e3,200e3);
     invariant_mass_background_mumu = new TH1F("invariant_mass_background_mumu","Invariant mass of the system (mumu)",400,0e3,200e3);
     
-    //Monte Carlo simulations only valid for 60MeV+, therefore define new invariant mass graphs between 60MeV-120MeV
+    //Monte Carlo simulations only valid for 60MeV+, therefore define new invariant mass graphs between 60GeV-120MeV
     h_invariant_mass_ee_60 = new TH1F("invariant_mass_60","Invariant mass of the system (ee)",400,60e3,120e3);
     h_invariant_mass_mumu_60 = new TH1F("invariant_mass_mumu_60","Invariant mass of the system (mumu)",400,60e3,120e3);
     
@@ -116,52 +105,6 @@ void CLoop::Fill(double weight) {
 	i_neg=1;
     }
     
-    double invariant_mass = sqrt(2*(lep_pt->at(i_pos)*lep_pt->at(i_neg))*(cosh((lep_eta->at(i_pos))-lep_eta->at(i_neg))-cos(lep_phi->at(i_pos)-lep_phi->at(i_neg))));
-    if (background == false) {
-        //ptcone
-        if (lep_ptcone30->at(i_pos)+lep_ptcone30->at(i_neg)>pt_cone_lower){
-            background = true;
-            pt++;
-        }else{
-        }
-
-        //etcone
-        if (lep_etcone20->at(i_pos)>et_cone_higher || lep_etcone20->at(i_neg)>et_cone_higher) {
-            background = true;
-            et++;
-        }else{
-        }
-
-        //mass
-        if (invariant_mass/1000 < mass_Z+mass_deviation && invariant_mass/1000 > mass_Z-mass_deviation) {
-        }else{
-            background = true;
-            mass++; 
-        }
-
-        //transverse momentum
-        if (lep_pt->at(i_pos)/1000<transverse_momentum_lower || lep_pt->at(i_neg)/1000<transverse_momentum_lower) {
-            background = true; 
-            trans++;
-        }else{
-        }
-
-        //phi
-        if (lep_phi->at(i_pos)<phi_range && lep_phi->at(i_neg)<phi_range && lep_phi->at(i_pos)>(phi_range*-1) && lep_phi->at(i_neg)>(phi_range*-1)) {
-        }else{
-            background = true;
-            phi++;
-        }
-
-        //eta
-        if (lep_eta->at(i_pos)<eta_range && lep_eta->at(i_neg)<eta_range && lep_eta->at(i_pos)>(eta_range*-1) && lep_eta->at(i_neg)>(eta_range*-1)) {
-        }else{
-            background = true;
-            eta++;
-        }
-
-    }
-
     if (lep_type->at(i_pos)==11) {
         total_number_of_e++;
         total_weight_sum_e+=weight;
@@ -169,8 +112,9 @@ void CLoop::Fill(double weight) {
         total_number_of_mu++;
         total_weight_sum_mu+=weight;
     }
-
+    
     //cout << "got" << i_pos << " " << i_neg << endl;
+    float invariant_mass = sqrt(2*(lep_pt->at(i_pos)*lep_pt->at(i_neg))*(cosh((lep_eta->at(i_pos))-lep_eta->at(i_neg))-cos(lep_phi->at(i_pos)-lep_phi->at(i_neg))));
     if (background == false) {
         if (lep_type->at(i_pos)==11) {
             h_invariant_mass_ee -> Fill(invariant_mass,weight);
@@ -192,7 +136,7 @@ void CLoop::Fill(double weight) {
                 selected_weight_sum_mu += weight;
         }
         
-       
+        if (lep_ptcone30->at(i_pos)>pt_cone_lower || lep_ptcone30->at(i_neg)>pt_cone_lower) {return;}
         
         // loop over leptons in the event
         for (size_t ilep=0; ilep<lep_type->size(); ilep++) {
@@ -278,7 +222,7 @@ void CLoop::Style(int colourcode) {
     h_invariant_mass_mumu->GetXaxis()->SetTitle("Invariant Mass of System"); // label x axis
     h_invariant_mass_mumu->GetYaxis()->SetTitle("Number of entries"); // label y axis
     h_invariant_mass_mumu->SetLineColor(colourcode); // set the line colour to red
-    //Monte Carlo valid for >60GeV therefore plot only valid data from histogram
+        //Monte Carlo valid for >60GeV therefore plot only valid data from histogram
     h_invariant_mass_ee_60->GetXaxis()->SetTitle("Invariant Mass of System"); // label x axis
     h_invariant_mass_ee_60->GetYaxis()->SetTitle("Number of entries"); // label y axis
     h_invariant_mass_ee_60->SetLineColor(colourcode); // set the line colour to red
@@ -312,6 +256,7 @@ void CLoop::Style(int colourcode) {
     h_etcone20_m->SetLineColor(colourcode); // set the line colour to red
     
     h_lep_n->Write();
+
     h_lep_type->Write();
     h_lep_pt->Write();
     h_lep_ptm->Write();
@@ -330,30 +275,17 @@ void CLoop::Style(int colourcode) {
     
     //Cross section calculations
     double INTEGRATED_LUMINOSITY = 10.064;
-    double efficiency_e = selected_weight_sum_e/TOTAL_WEIGHT_E;
-    double efficiency_mu = selected_weight_sum_mu/TOTAL_WEIGHT_MU;
+    double efficiency_e = selected_weight_sum_e/total_weight_sum_e;
+    double efficiency_mu = selected_weight_sum_mu/total_weight_sum_mu;
     cout << "Efficiency - electrons: " << efficiency_e << endl;
     cout << "Efficiency - muons: " << efficiency_mu << endl << endl;
     
-
     cout << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << endl;
-    cout << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << endl << endl;
-    
-
-    double cross_section_e = (((selected_weight_sum_e)-(total_weight_sum_e - selected_weight_sum_e))/(INTEGRATED_LUMINOSITY*efficiency_e))/1000;
-    double cross_section_mu = (((selected_weight_sum_mu)-(total_weight_sum_mu - selected_weight_sum_mu))/(INTEGRATED_LUMINOSITY*efficiency_mu))/1000;
-    
+    cout << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << endl;
+    double cross_section_e = ((2*selected_weight_sum_e)-total_weight_sum_e)/(INTEGRATED_LUMINOSITY*efficiency_e);
+    double cross_section_mu = ((2*selected_weight_sum_mu)-total_weight_sum_mu)/(INTEGRATED_LUMINOSITY*efficiency_mu);
     cout << "Cross section - electrons: " << cross_section_e << endl;
-    cout << "Cross section - muons: " << cross_section_mu << endl << endl;
-
-
-    cout<< "parameters: " <<std::endl
-        << "ptcone: " << pt_cone_lower << " rejected: " << pt  << std::endl
-        << "etcone: " << et_cone_higher << " rejected: " << et  << std::endl
-        << "invariant mass: " << mass_deviation << " rejected: " << mass  << std::endl
-        << "transverse mom: " << transverse_momentum_lower << " rejected: " << trans  << std::endl
-        << "phi: " << phi_range << " rejected: " << phi  << std::endl
-        << "eta: " << eta_range << " rejected: " << eta  << std::endl;
+    cout << "Cross section - muons: " << cross_section_mu << endl;
 
     invariant_mass_background_ee -> Write();
     invariant_mass_background_mumu -> Write();

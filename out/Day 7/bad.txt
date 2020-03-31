@@ -1,0 +1,129 @@
+Analysing Zee...
+(TFile *) 0x49cd140
+(TTree *) 0x4be2830
+(CLoop *) 0x55bf630
+Efficiency - electrons: 0.174754
+Efficiency - muons: 8.41936e-05
+
+3.43044e+06:1.39721e+06
+1652.82:8944.08
+
+Cross section - electrons: 1156.08
+Cross section - muons: -8605.03
+
+648
+
+
+
+Analysing Zee...
+(TFile *) 0x4547900
+(TTree *) 0x4726da0
+(CLoop *) 0x5118710
+Efficiency - electrons: 0.181777
+Efficiency - muons: 0.000153377
+
+3.56831e+06:1.25934e+06
+3010.96:7585.94
+
+Cross section - electrons: 1262.14
+Cross section - muons: -2963.87
+
+parameters: 
+ptcone: 50
+etcone: 9000
+invariant mass: 60
+transverse mom: 0
+phi: 3.14159
+eta: 3.14159
+660
+
+Analysing 2lep...
+A
+(TFile *) 0x47c3490
+(TTree *) 0x4abde20
+(CLoop *) 0x4bc2680
+Efficiency - electrons: 0.010902
+Efficiency - muons: 0.012004
+
+214008:108169
+235652:109686
+
+Cross section - electrons: 964.647
+Cross section - muons: 1042.7
+
+parameters: 
+ptcone: 50 rejected: 169019
+etcone: 9000 rejected: 127
+invariant mass: 60 rejected: 39206
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 3.14159 rejected: 0
+18
+B
+(TFile *) 0x3b44070
+(TTree *) 0x4887dc0
+(CLoop *) 0x4adf960
+Efficiency - electrons: 0.0384267
+Efficiency - muons: 0.044579
+
+754321:395941
+875137:431459
+
+Cross section - electrons: 926.702
+Cross section - muons: 988.934
+
+parameters: 
+ptcone: 50 rejected: 642172
+etcone: 9000 rejected: 487
+invariant mass: 60 rejected: 142396
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 3.14159 rejected: 0
+70
+C
+(TFile *) 0x51dd840
+(TTree *) 0x51de870
+(CLoop *) 0xa8ef680
+Efficiency - electrons: 0.0556525
+Efficiency - muons: 0.0648988
+
+1.09246e+06:578521
+1.27404e+06:638952
+
+Cross section - electrons: 917.616
+Cross section - muons: 972.357
+
+parameters: 
+ptcone: 50 rejected: 943732
+etcone: 9000 rejected: 690
+invariant mass: 60 rejected: 207651
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 3.14159 rejected: 0
+102
+D
+(TFile *) 0xa92d5a0
+(TTree *) 0x5450360
+(CLoop *) 0xaea1b90
+Efficiency - electrons: 0.0846942
+Efficiency - muons: 0.0979215
+
+1.66256e+06:888433
+1.92231e+06:1.01061e+06
+
+Cross section - electrons: 908.212
+Cross section - muons: 925.133
+
+parameters: 
+ptcone: 50 rejected: 1498037
+etcone: 9000 rejected: 1035
+invariant mass: 60 rejected: 285598
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 3.14159 rejected: 0
+157
+
+
+
+
+" rejected: " << pt  <<

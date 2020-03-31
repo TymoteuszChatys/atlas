@@ -1,0 +1,10 @@
+MC Higgs BW fit: 
+
+FCN=0.545426 FROM HESSE     STATUS=OK             16 CALLS          75 TOTAL
+                     EDM=1.76536e-15    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  mass         1.23915e+05   9.01902e+02   4.53964e-06  -8.43739e-09
+   2  width        3.75024e+03   1.70215e+03   7.46083e-01  -2.47993e-11
+   3  amp          1.01279e+04   3.28847e+03   8.25703e-02   5.31109e-13
+                               ERR DEF= 0.5

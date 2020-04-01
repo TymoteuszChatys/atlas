@@ -363,14 +363,13 @@ void CLoop::Style(int colourcode) {
     std::cout << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << std::endl;
     std::cout << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << std::endl << std::endl;
 
-    outfile.open("test.txt", std::ios_base::app); // append instead of overwrite
+    outfile.open("outputall.txt", std::ios_base::app); // append instead of overwrite
     outfile << "Date: " << std::ctime(&end_time) << std::endl;
-    outfile << "parameters: " 
-        << "ptcone: " << pt_cone_lower << " rejected: " << pt  << " "
-        << "etcone: " << et_cone_higher << " rejected: " << et  << " "
-        << "invariant mass: " << mass_deviation << " rejected: " << mass  << " "
-        << "transverse mom: " << transverse_momentum_lower << " rejected: " << trans  << " "
-        << "phi: " << phi_range << " rejected: " << phi  << " "
+    outfile << "parameters: "  << std::endl
+        << "ptcone: " << pt_cone_lower << " rejected: " << pt  << std::endl
+        << "etcone: " << et_cone_higher << " rejected: " << et  << std::endl
+        << "transverse mom: " << transverse_momentum_lower << " rejected: " << trans  << std::endl
+        << "phi: " << phi_range << " rejected: " << phi  << std::endl
         << "eta: " << eta_range << " rejected: " << eta  << std::endl << std::endl; 
 
     outfile << "Efficiency - electrons: " << efficiency_e 
@@ -381,5 +380,14 @@ void CLoop::Style(int colourcode) {
 
     outfile << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << std::endl;
     outfile << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << std::endl << std::endl;
+
+    std::ofstream tempecsv;
+    std::ofstream tempmucsv;
+    tempecsv.open("tempe.csv", std::ios_base::app);
+    tempmucsv.open("tempmu.csv", std::ios_base::app);
+    tempecsv << selected_weight_sum_e << "," << total_weight_sum_e - selected_weight_sum_e;
+    tempmucsv << selected_weight_sum_mu << "," << total_weight_sum_mu - selected_weight_sum_mu;
+    tempecsv.close();
+    tempmucsv.close();
 }
 #endif // End header guard

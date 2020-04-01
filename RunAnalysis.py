@@ -7,6 +7,7 @@ sys.path.insert(0, "backend") # allow code to be imported from subdirectory
 import ROOT as r
 import os
 import datetime as dt
+import csv
 from DrawC import DrawC
 from getInput import getInput
 from infofile import infos
@@ -81,7 +82,7 @@ def combine(files, fast):
 
     # save the combined histograms to a file
     name = "_".join(files) # name of output file
-    totFile = r.TFile("out/"+ name + fastStr(fast) + dt.datetime.now().strftime('_%d_%H%M') + ".root","RECREATE")
+    totFile = r.TFile("out/"+ name + fastStr(fast) + "_" + dt.datetime.now().strftime('%d%H%M') + ".root","RECREATE")
     for hist in totHist:
         hist.Write()
     totFile.Close()
@@ -97,6 +98,7 @@ while (not chainsValid):
     print("Write 'text' if you would prefer to read a list from 'input.txt':")
     chains, colourcodes, chainsValid = getInput()
     print()
+
 
 # if all decay chains are valid loop over series 
 # detect whether the user wants to run in 'fast' mode for only 1% of data
@@ -140,3 +142,58 @@ for i in range(len(chains)):
     # combine chains in the series if it contains more than one chain
     if (len(chains[i])>1):
         combine(chains[i], fastMode)
+
+
+
+with open("outputall.txt", "a") as myfile:
+    myfile.write("\n-------------------------------------- \n")
+
+selected_weight_sum_mu = []
+selected_weight_sum_e = []
+background_weight_sum_e = []
+background_weight_sum_mu = []
+
+with open('tempe.csv', newline='') as AvgTemp:
+  tot = []
+  tot2 = []
+  for line in AvgTemp:
+    line = line.strip().split(',')
+    value = float(line[0])
+    value2 = float(line[1])
+    tot.append(value)
+    tot2.append(value2)
+  # sum values
+  selected_weight_sum_e = sum(tot)
+  background_weight_sum_e = sum(tot2)
+
+
+with open('tempmu.csv', newline='') as AvgTemp:
+  tot = []
+  tot2 = []
+  for line in AvgTemp:
+    line = line.strip().split(',')
+    value = float(line[0])
+    value2 = float(line[1])
+    tot.append(value)
+    tot2.append(value2)
+  # sum values
+  selected_weight_sum_mu = sum(tot)
+  background_weight_sum_mu = sum(tot2)
+
+os.remove('tempe.csv')
+os.remove('tempmu.csv')
+
+INTEGRATED_LUMINOSITY = 10.064
+TOTAL_WEIGHT_E = 19630128.89
+TOTAL_WEIGHT_MU = 19631161.45
+
+efficiency_e = selected_weight_sum_e/TOTAL_WEIGHT_E
+efficiency_mu = selected_weight_sum_mu/TOTAL_WEIGHT_MU
+    
+cross_section_e = (((selected_weight_sum_e)-(background_weight_sum_e))/(INTEGRATED_LUMINOSITY*efficiency_e))/1000
+cross_section_mu = (((selected_weight_sum_mu)-(background_weight_sum_mu))/(INTEGRATED_LUMINOSITY*efficiency_mu))/1000
+
+with open('Outputfile.csv', 'a', newline='') as outfile:
+    writer = csv.writer(outfile)
+    writer.writerow(["Electrons", dt.datetime.now().strftime('%d%H%M'), selected_weight_sum_e,background_weight_sum_e,efficiency_e,cross_section_e])
+    writer.writerow(["Muons", dt.datetime.now().strftime('%d%H%M'), selected_weight_sum_mu,background_weight_sum_mu,efficiency_mu,cross_section_mu])

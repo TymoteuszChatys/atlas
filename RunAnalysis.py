@@ -82,7 +82,7 @@ def combine(files, fast):
 
     # save the combined histograms to a file
     name = "_".join(files) # name of output file
-    totFile = r.TFile("out/"+ name + fastStr(fast) + "_" + dt.datetime.now().strftime('%d%H%M') + ".root","RECREATE")
+    totFile = r.TFile("out/"+ name + fastStr(fast) + "_" + dt.datetime.now().strftime('%d_%H%M') + ".root","RECREATE")
     for hist in totHist:
         hist.Write()
     totFile.Close()
@@ -195,5 +195,5 @@ cross_section_mu = (((selected_weight_sum_mu)-(background_weight_sum_mu))/(INTEG
 
 with open('Outputfile.csv', 'a', newline='') as outfile:
     writer = csv.writer(outfile)
-    writer.writerow(["Electrons", dt.datetime.now().strftime('%d%H%M'), selected_weight_sum_e,background_weight_sum_e,efficiency_e,cross_section_e])
-    writer.writerow(["Muons", dt.datetime.now().strftime('%d%H%M'), selected_weight_sum_mu,background_weight_sum_mu,efficiency_mu,cross_section_mu])
+    writer.writerow(["Electrons", dt.datetime.now().strftime('%d_%H%M'), selected_weight_sum_e,background_weight_sum_e,efficiency_e,cross_section_e])
+    writer.writerow(["Muons", dt.datetime.now().strftime('%d_%H%M'), selected_weight_sum_mu,background_weight_sum_mu,efficiency_mu,cross_section_mu])

@@ -22,9 +22,9 @@ int pt,et,mass,trans,phi,eta{};
 double mass_Z{91.1876};
 
 // CUTS APPLIED
-double pt_cone_lower{1000000000};
+double pt_cone_lower{400000};
 double et_cone_higher{90000};
-double mass_deviation{600};
+double mass_deviation{3000};
 double transverse_momentum_lower{0};
 double phi_range{3.1415926};
 double eta_range{2.8};
@@ -73,6 +73,7 @@ void CLoop::Fill(double weight) {
     // To fill a histogram you should write:
     // histogram->Fill(quantity,weight)
     bool background{false};
+    bool rejected{false};
     // For example, filling a histogram with the number of leptons in each event
     h_lep_n -> Fill(lep_n, weight);
     
@@ -115,19 +116,18 @@ void CLoop::Fill(double weight) {
 	i_pos=0;
 	i_neg=1;
     }
-    
+
     double invariant_mass = sqrt(2*(lep_pt->at(i_pos)*lep_pt->at(i_neg))*(cosh((lep_eta->at(i_pos))-lep_eta->at(i_neg))-cos(lep_phi->at(i_pos)-lep_phi->at(i_neg))));
-    if (background == false) {
         //ptcone
         if (lep_ptcone30->at(i_pos)+lep_ptcone30->at(i_neg)>pt_cone_lower){
-            background = true;
+            rejected = true;
             pt++;
         }else{
         }
 
         //etcone
         if (lep_etcone20->at(i_pos)>et_cone_higher || lep_etcone20->at(i_neg)>et_cone_higher) {
-            background = true;
+            rejected = true;
             et++;
         }else{
         }
@@ -135,13 +135,13 @@ void CLoop::Fill(double weight) {
         //mass
         if (invariant_mass/1000 < mass_Z+mass_deviation && invariant_mass/1000 > mass_Z-mass_deviation) {
         }else{
-            background = true;
+            rejected = true;
             mass++; 
         }
 
         //transverse momentum
         if (lep_pt->at(i_pos)/1000<transverse_momentum_lower || lep_pt->at(i_neg)/1000<transverse_momentum_lower) {
-            background = true; 
+            rejected = true; 
             trans++;
         }else{
         }
@@ -149,86 +149,88 @@ void CLoop::Fill(double weight) {
         //phi
         if (lep_phi->at(i_pos)<phi_range && lep_phi->at(i_neg)<phi_range && lep_phi->at(i_pos)>(phi_range*-1) && lep_phi->at(i_neg)>(phi_range*-1)) {
         }else{
-            background = true;
+            rejected = true;
             phi++;
         }
 
         //eta
         if (lep_eta->at(i_pos)<eta_range && lep_eta->at(i_neg)<eta_range && lep_eta->at(i_pos)>(eta_range*-1) && lep_eta->at(i_neg)>(eta_range*-1)) {
         }else{
-            background = true;
+            rejected = true;
             eta++;
         }
 
-    }
-
-    if (lep_type->at(i_pos)==11) {
+    if (rejected == false){
+        if (lep_type->at(i_pos)==11) {
         total_number_of_e++;
         total_weight_sum_e+=weight;
-    } else if (lep_type->at(i_pos)==13) {
+        } else if (lep_type->at(i_pos)==13) {
         total_number_of_mu++;
         total_weight_sum_mu+=weight;
     }
 
-    //cout << "got" << i_pos << " " << i_neg << endl;
-    if (background == false) {
-        if (lep_type->at(i_pos)==11) {
-            h_invariant_mass_ee -> Fill(invariant_mass,weight);
-            h_invariant_mass_ee_60 -> Fill(invariant_mass,weight);
-            h_ptcone30_e -> Fill(lep_ptcone30->at(i_pos),weight);
-            h_ptcone30_e -> Fill(lep_ptcone30->at(i_neg),weight);
-            h_etcone20_e -> Fill(lep_etcone20->at(i_pos),weight);
-            h_etcone20_e -> Fill(lep_etcone20->at(i_neg),weight);
-                number_of_selected_e++;
-	            selected_weight_sum_e += weight;
-        } else if (lep_type->at(i_pos)==13) {
-            h_invariant_mass_mumu -> Fill(invariant_mass,weight);
-            h_invariant_mass_mumu_60 -> Fill(invariant_mass,weight);
-            h_ptcone30_m -> Fill(lep_ptcone30->at(i_pos),weight);
-            h_ptcone30_m -> Fill(lep_ptcone30->at(i_neg),weight);
-            h_etcone20_m -> Fill(lep_etcone20->at(i_pos),weight);
-            h_etcone20_m -> Fill(lep_etcone20->at(i_neg),weight);
-	            number_of_selected_mu++;
-                selected_weight_sum_mu += weight;
-        }
-        
-       
-        
-        // loop over leptons in the event
-        for (size_t ilep=0; ilep<lep_type->size(); ilep++) {
-            h_lep_eta -> Fill(lep_eta->at(ilep),weight);
-            h_lep_phi -> Fill(lep_phi->at(ilep),weight);
-            // This is where you will want to fill histograms with properties of individual leptons
-            // You will need to use quantity->at(ilep) to refer to properties of the lepton
-
-            // For example, filling a histogram with the type of each lepton
-            // muons have type = 13, electrons have type = 11
-
-            h_lep_type -> Fill(lep_type->at(ilep),weight);
-            // Filling the transverse momentum of each lepton, but only if it is an electron
-        
-            if (lep_type->at(ilep) == 11) {
-                h_lep_pt -> Fill(lep_pt->at(ilep),weight);
-            }else if(lep_type->at(ilep) == 13) {
-                h_lep_ptm -> Fill(lep_pt->at(ilep),weight);
-            }
-        
-            if (lep_charge->at(ilep) > 0){
-                h_lep_pt_negative -> Fill(lep_pt->at(ilep),weight);
-            }else if (lep_charge->at(ilep) <0){
-                h_lep_pt_positive -> Fill(lep_pt->at(ilep),weight);
-            }
-        // End of loop over leptons
-        }
-
-    }else if(background == true){
-        if (lep_type->at(i_pos)==11) {
-            invariant_mass_background_ee -> Fill(invariant_mass,weight);
-        } else if (lep_type->at(i_pos)==13) {
-            invariant_mass_background_mumu -> Fill(invariant_mass,weight);
-        }
     }
     
+    //cout << "got" << i_pos << " " << i_neg << endl;
+    if (rejected == false){
+        if (background == false) {
+            if (lep_type->at(i_pos)==11) {
+                h_invariant_mass_ee -> Fill(invariant_mass,weight);
+                h_invariant_mass_ee_60 -> Fill(invariant_mass,weight);
+                h_ptcone30_e -> Fill(lep_ptcone30->at(i_pos),weight);
+                h_ptcone30_e -> Fill(lep_ptcone30->at(i_neg),weight);
+                h_etcone20_e -> Fill(lep_etcone20->at(i_pos),weight);
+                h_etcone20_e -> Fill(lep_etcone20->at(i_neg),weight);
+                    number_of_selected_e++;
+                    selected_weight_sum_e += weight;
+            } else if (lep_type->at(i_pos)==13) {
+                h_invariant_mass_mumu -> Fill(invariant_mass,weight);
+                h_invariant_mass_mumu_60 -> Fill(invariant_mass,weight);
+                h_ptcone30_m -> Fill(lep_ptcone30->at(i_pos),weight);
+                h_ptcone30_m -> Fill(lep_ptcone30->at(i_neg),weight);
+                h_etcone20_m -> Fill(lep_etcone20->at(i_pos),weight);
+                h_etcone20_m -> Fill(lep_etcone20->at(i_neg),weight);
+                    number_of_selected_mu++;
+                    selected_weight_sum_mu += weight;
+            }
+            
+        
+            
+            // loop over leptons in the event
+            for (size_t ilep=0; ilep<lep_type->size(); ilep++) {
+                h_lep_eta -> Fill(lep_eta->at(ilep),weight);
+                h_lep_phi -> Fill(lep_phi->at(ilep),weight);
+                // This is where you will want to fill histograms with properties of individual leptons
+                // You will need to use quantity->at(ilep) to refer to properties of the lepton
+
+                // For example, filling a histogram with the type of each lepton
+                // muons have type = 13, electrons have type = 11
+
+                h_lep_type -> Fill(lep_type->at(ilep),weight);
+                // Filling the transverse momentum of each lepton, but only if it is an electron
+            
+                if (lep_type->at(ilep) == 11) {
+                    h_lep_pt -> Fill(lep_pt->at(ilep),weight);
+                }else if(lep_type->at(ilep) == 13) {
+                    h_lep_ptm -> Fill(lep_pt->at(ilep),weight);
+                }
+            
+                if (lep_charge->at(ilep) > 0){
+                    h_lep_pt_negative -> Fill(lep_pt->at(ilep),weight);
+                }else if (lep_charge->at(ilep) <0){
+                    h_lep_pt_positive -> Fill(lep_pt->at(ilep),weight);
+                }
+            // End of loop over leptons
+            }
+
+        }else if(background == true){
+            if (lep_type->at(i_pos)==11) {
+                invariant_mass_background_ee -> Fill(invariant_mass,weight);
+            } else if (lep_type->at(i_pos)==13) {
+                invariant_mass_background_mumu -> Fill(invariant_mass,weight);
+            }
+        }
+    }
 }
 
 void CLoop::Style(int colourcode) {
@@ -363,7 +365,7 @@ void CLoop::Style(int colourcode) {
     std::cout << selected_weight_sum_e << ':' << total_weight_sum_e - selected_weight_sum_e << std::endl;
     std::cout << selected_weight_sum_mu << ':' << total_weight_sum_mu - selected_weight_sum_mu << std::endl << std::endl;
 
-    outfile.open("outputall.txt", std::ios_base::app); // append instead of overwrite
+    outfile.open("log.txt", std::ios_base::app); // append instead of overwrite
     outfile << "Date: " << std::ctime(&end_time) << std::endl;
     outfile << "parameters: "  << std::endl
         << "ptcone: " << pt_cone_lower << " rejected: " << pt  << std::endl
@@ -385,8 +387,8 @@ void CLoop::Style(int colourcode) {
     std::ofstream tempmucsv;
     tempecsv.open("tempe.csv", std::ios_base::app);
     tempmucsv.open("tempmu.csv", std::ios_base::app);
-    tempecsv << selected_weight_sum_e << "," << total_weight_sum_e - selected_weight_sum_e;
-    tempmucsv << selected_weight_sum_mu << "," << total_weight_sum_mu - selected_weight_sum_mu;
+    tempecsv << selected_weight_sum_e << "," << total_weight_sum_e - selected_weight_sum_e << "\n";
+    tempmucsv << selected_weight_sum_mu << "," << total_weight_sum_mu - selected_weight_sum_mu << "\n";
     tempecsv.close();
     tempmucsv.close();
 }

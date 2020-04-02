@@ -22,10 +22,10 @@ int pt,et,mass,trans,phi,eta{};
 double mass_Z{91.1876};
 
 // CUTS APPLIED
-double pt_cone_lower{400000};
-double et_cone_higher{90000};
-double mass_deviation{3000};
-double transverse_momentum_lower{0};
+double pt_cone_lower{2000};
+double et_cone_higher{5000};
+double mass_deviation{30};
+double transverse_momentum_lower{15};
 double phi_range{3.1415926};
 double eta_range{2.8};
 
@@ -370,6 +370,7 @@ void CLoop::Style(int colourcode) {
     outfile << "parameters: "  << std::endl
         << "ptcone: " << pt_cone_lower << " rejected: " << pt  << std::endl
         << "etcone: " << et_cone_higher << " rejected: " << et  << std::endl
+        << "invariant mass: " << mass_deviation << " rejected: " << mass  << std::endl
         << "transverse mom: " << transverse_momentum_lower << " rejected: " << trans  << std::endl
         << "phi: " << phi_range << " rejected: " << phi  << std::endl
         << "eta: " << eta_range << " rejected: " << eta  << std::endl << std::endl; 

@@ -161,10 +161,10 @@ void CLoop::Fill(double weight) {
         }
 
     if (rejected == false){
-        if (lep_type->at(i_pos)==11) {
+        if (lep_type->at(i_pos)==11 && lep_type->at(i_neg)==11) {
         total_number_of_e++;
         total_weight_sum_e+=weight;
-        } else if (lep_type->at(i_pos)==13) {
+        } else if (lep_type->at(i_pos)==13 && lep_type->at(i_neg)==13) {
         total_number_of_mu++;
         total_weight_sum_mu+=weight;
     }

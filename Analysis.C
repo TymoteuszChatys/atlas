@@ -174,7 +174,7 @@ void CLoop::Fill(double weight) {
     //cout << "got" << i_pos << " " << i_neg << endl;
     if (rejected == false){
         if (background == false) {
-            if (lep_type->at(i_pos)==11) {
+            if (lep_type->at(i_pos)==11 && lep_type->at(i_neg)==11) {
                 h_invariant_mass_ee -> Fill(invariant_mass,weight);
                 h_invariant_mass_ee_60 -> Fill(invariant_mass,weight);
                 h_ptcone30_e -> Fill(lep_ptcone30->at(i_pos),weight);
@@ -183,7 +183,7 @@ void CLoop::Fill(double weight) {
                 h_etcone20_e -> Fill(lep_etcone20->at(i_neg),weight);
                     number_of_selected_e++;
                     selected_weight_sum_e += weight;
-            } else if (lep_type->at(i_pos)==13) {
+            } else if (lep_type->at(i_pos)==13 && lep_type->at(i_neg)==13) {
                 h_invariant_mass_mumu -> Fill(invariant_mass,weight);
                 h_invariant_mass_mumu_60 -> Fill(invariant_mass,weight);
                 h_ptcone30_m -> Fill(lep_ptcone30->at(i_pos),weight);

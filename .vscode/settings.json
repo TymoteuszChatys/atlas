@@ -63,6 +63,7 @@
         "valarray": "cpp",
         "variant": "cpp",
         "Analysis-Z.C": "cpp",
-        "Analysis-H.C": "cpp"
+        "Analysis-H.C": "cpp",
+        "CLoop.C": "cpp"
     }
 }

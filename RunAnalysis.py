@@ -187,13 +187,19 @@ INTEGRATED_LUMINOSITY = 10.064
 TOTAL_WEIGHT_E = 19630128.89
 TOTAL_WEIGHT_MU = 19631161.45
 
-efficiency_e = selected_weight_sum_e/TOTAL_WEIGHT_E
-efficiency_mu = selected_weight_sum_mu/TOTAL_WEIGHT_MU
-    
-cross_section_e = (((selected_weight_sum_e)-(background_weight_sum_e))/(INTEGRATED_LUMINOSITY*efficiency_e))/1000
-cross_section_mu = (((selected_weight_sum_mu)-(background_weight_sum_mu))/(INTEGRATED_LUMINOSITY*efficiency_mu))/1000
-
 with open('Outputfile.csv', 'a', newline='') as outfile:
     writer = csv.writer(outfile)
-    writer.writerow([chains,"Electrons", dt.datetime.now().strftime('%d_%H%M'), selected_weight_sum_e,background_weight_sum_e,efficiency_e,cross_section_e])
-    writer.writerow([chains,"Muons", dt.datetime.now().strftime('%d_%H%M'), selected_weight_sum_mu,background_weight_sum_mu,efficiency_mu,cross_section_mu])
+    if (selected_weight_sum_e != 0):
+        efficiency_e = selected_weight_sum_e/TOTAL_WEIGHT_E
+        cross_section_e = (((selected_weight_sum_e)-(background_weight_sum_e))/(INTEGRATED_LUMINOSITY*efficiency_e))/1000
+        writer.writerow([chains,"Electrons", dt.datetime.now().strftime('%d_%H%M'), selected_weight_sum_e,background_weight_sum_e,efficiency_e,cross_section_e])
+
+    if (selected_weight_sum_mu != 0):
+        efficiency_mu = selected_weight_sum_mu/TOTAL_WEIGHT_MU
+        cross_section_mu = (((selected_weight_sum_mu)-(background_weight_sum_mu))/(INTEGRATED_LUMINOSITY*efficiency_mu))/1000
+        writer.writerow([chains,"Muons", dt.datetime.now().strftime('%d_%H%M'), selected_weight_sum_mu,background_weight_sum_mu,efficiency_mu,cross_section_mu])
+
+
+
+    
+    

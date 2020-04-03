@@ -174,3 +174,813 @@ Cross section - electrons: 1913.72  Cross section - muons: 332.293
 4.73822e+06:89428.9
 5791.77:4805.13
 
+Date: Thu Apr  2 16:52:12 2020
+
+parameters: 
+ptcone: 400000 rejected: 12
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0158606  Efficiency - muons: 0.016869
+
+Cross section - electrons: 1882.7  Cross section - muons: 1867.17
+
+311345:10827
+331159:14169
+
+Date: Thu Apr  2 16:53:42 2020
+
+parameters: 
+ptcone: 400000 rejected: 28
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0566261  Efficiency - muons: 0.0635115
+
+Cross section - electrons: 1882.68  Cross section - muons: 1857.13
+
+1.11158e+06:38668
+1.2468e+06:59765
+
+Date: Thu Apr  2 16:55:52 2020
+
+parameters: 
+ptcone: 400000 rejected: 51
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.082258  Efficiency - muons: 0.0927933
+
+Cross section - electrons: 1882.61  Cross section - muons: 1852.86
+
+1.61474e+06:56228
+1.82164e+06:91303
+
+Date: Thu Apr  2 16:59:11 2020
+
+parameters: 
+ptcone: 400000 rejected: 100
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.125701  Efficiency - muons: 0.142051
+
+Cross section - electrons: 1884.59  Cross section - muons: 1849.78
+
+2.46752e+06:83421
+2.78864e+06:144177
+
+Date: Thu Apr  2 17:51:08 2020
+
+parameters: 
+ptcone: 400000 rejected: 12
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0158606  Efficiency - muons: 0.016869
+
+Cross section - electrons: 1882.7  Cross section - muons: 1867.17
+
+311345:10827
+331159:14169
+
+Date: Thu Apr  2 17:52:34 2020
+
+parameters: 
+ptcone: 400000 rejected: 28
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0566261  Efficiency - muons: 0.0635115
+
+Cross section - electrons: 1882.68  Cross section - muons: 1857.13
+
+1.11158e+06:38668
+1.2468e+06:59765
+
+Date: Thu Apr  2 17:54:35 2020
+
+parameters: 
+ptcone: 400000 rejected: 51
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.082258  Efficiency - muons: 0.0927933
+
+Cross section - electrons: 1882.61  Cross section - muons: 1852.86
+
+1.61474e+06:56228
+1.82164e+06:91303
+
+Date: Thu Apr  2 17:57:41 2020
+
+parameters: 
+ptcone: 400000 rejected: 100
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.125701  Efficiency - muons: 0.142051
+
+Cross section - electrons: 1884.59  Cross section - muons: 1849.78
+
+2.46752e+06:83421
+2.78864e+06:144177
+
+Date: Thu Apr  2 18:11:01 2020
+
+parameters: 
+ptcone: 400000 rejected: 12
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0158606  Efficiency - muons: 0.016869
+
+Cross section - electrons: 1882.7  Cross section - muons: 1867.17
+
+311345:10827
+331159:14169
+
+Date: Thu Apr  2 18:12:25 2020
+
+parameters: 
+ptcone: 400000 rejected: 28
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0566261  Efficiency - muons: 0.0635115
+
+Cross section - electrons: 1882.68  Cross section - muons: 1857.13
+
+1.11158e+06:38668
+1.2468e+06:59765
+
+Date: Thu Apr  2 18:14:29 2020
+
+parameters: 
+ptcone: 400000 rejected: 51
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.082258  Efficiency - muons: 0.0927933
+
+Cross section - electrons: 1882.61  Cross section - muons: 1852.86
+
+1.61474e+06:56228
+1.82164e+06:91303
+
+Date: Thu Apr  2 18:17:33 2020
+
+parameters: 
+ptcone: 400000 rejected: 100
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.125701  Efficiency - muons: 0.142051
+
+Cross section - electrons: 1884.59  Cross section - muons: 1849.78
+
+2.46752e+06:83421
+2.78864e+06:144177
+
+Date: Thu Apr  2 20:10:53 2020
+
+parameters: 
+ptcone: 400000 rejected: 181
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.241375  Efficiency - muons: 0.000295029
+
+Cross section - electrons: 1913.73  Cross section - muons: 332.554
+
+4.73822e+06:89388.7
+5791.77:4804.35
+
+Date: Thu Apr  2 21:08:40 2020
+
+parameters: 
+ptcone: 400000 rejected: 12
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0158606  Efficiency - muons: 0.0155305
+
+Cross section - electrons: 1882.7  Cross section - muons: 1691.85
+
+311345:10827
+304881:40447
+
+Date: Thu Apr  2 21:10:10 2020
+
+parameters: 
+ptcone: 400000 rejected: 28
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0566261  Efficiency - muons: 0.0584476
+
+Cross section - electrons: 1882.68  Cross section - muons: 1680.02
+
+1.11158e+06:38668
+1.14739e+06:159176
+
+Date: Thu Apr  2 21:12:19 2020
+
+parameters: 
+ptcone: 400000 rejected: 51
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.082258  Efficiency - muons: 0.0852987
+
+Cross section - electrons: 1882.61  Cross section - muons: 1672.88
+
+1.61474e+06:56228
+1.67451e+06:238432
+
+Date: Thu Apr  2 21:15:38 2020
+
+parameters: 
+ptcone: 400000 rejected: 100
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.125701  Efficiency - muons: 0.130999
+
+Cross section - electrons: 1884.59  Cross section - muons: 1676.69
+
+2.46752e+06:83421
+2.57165e+06:361158
+
+Date: Thu Apr  2 21:16:54 2020
+
+parameters: 
+ptcone: 400000 rejected: 12
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0158606  Efficiency - muons: 0.0155305
+
+Cross section - electrons: 1882.7  Cross section - muons: 1931.53
+
+311345:10827
+304881:2986
+
+Date: Thu Apr  2 21:18:17 2020
+
+parameters: 
+ptcone: 400000 rejected: 28
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0566261  Efficiency - muons: 0.0584476
+
+Cross section - electrons: 1882.68  Cross section - muons: 1925.46
+
+1.11158e+06:38668
+1.14739e+06:14804
+
+Date: Thu Apr  2 21:20:17 2020
+
+parameters: 
+ptcone: 400000 rejected: 51
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.082258  Efficiency - muons: 0.0852987
+
+Cross section - electrons: 1882.61  Cross section - muons: 1923.23
+
+1.61474e+06:56228
+1.67451e+06:23522
+
+Date: Thu Apr  2 21:23:19 2020
+
+parameters: 
+ptcone: 400000 rejected: 100
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.125701  Efficiency - muons: 0.130999
+
+Cross section - electrons: 1884.59  Cross section - muons: 1919.81
+
+2.46752e+06:83421
+2.57165e+06:40635
+
+Date: Thu Apr  2 21:45:35 2020
+
+parameters: 
+ptcone: 400000 rejected: 181
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.241375  Efficiency - muons: 3.71934e-08
+
+Cross section - electrons: 1913.73  Cross section - muons: 1950.63
+
+4.73822e+06:89388.7
+0.73015:0
+
+Date: Thu Apr  2 22:03:07 2020
+
+parameters: 
+ptcone: 400000 rejected: 141
+etcone: 90000 rejected: 0
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 2.87244e-08  Efficiency - muons: 0.263517
+
+Cross section - electrons: 44.6271  Cross section - muons: 1949.62
+
+0.563863:0.550962
+5.17315e+06:2694.2
+
+Date: Thu Apr  2 22:24:57 2020
+
+parameters: 
+ptcone: 2000 rejected: 72206
+etcone: 5000 rejected: 3530
+invariant mass: 30 rejected: 101958
+transverse mom: 15 rejected: 76104
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0121324  Efficiency - muons: 0.0129264
+
+Cross section - electrons: 1919.17  Cross section - muons: 1946.54
+
+238161:3829
+253760:532
+
+Date: Thu Apr  2 22:26:16 2020
+
+parameters: 
+ptcone: 2000 rejected: 271086
+etcone: 5000 rejected: 13768
+invariant mass: 30 rejected: 376563
+transverse mom: 15 rejected: 279119
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.043167  Efficiency - muons: 0.0483566
+
+Cross section - electrons: 1919.21  Cross section - muons: 1944.1
+
+847373:13605
+949296:3180
+
+Date: Thu Apr  2 22:28:08 2020
+
+parameters: 
+ptcone: 2000 rejected: 400875
+etcone: 5000 rejected: 20011
+invariant mass: 30 rejected: 553016
+transverse mom: 15 rejected: 405914
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0626164  Efficiency - muons: 0.0703901
+
+Cross section - electrons: 1918.65  Cross section - muons: 1943.04
+
+1.22917e+06:20091
+1.38184e+06:5378
+
+Date: Thu Apr  2 22:31:02 2020
+
+parameters: 
+ptcone: 2000 rejected: 637812
+etcone: 5000 rejected: 30115
+invariant mass: 30 rejected: 777223
+transverse mom: 15 rejected: 568802
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0967779  Efficiency - muons: 0.107991
+
+Cross section - electrons: 1919.05  Cross section - muons: 1941.45
+
+1.89976e+06:30663
+2.12e+06:9978
+
+Date: Thu Apr  2 22:54:47 2020
+
+parameters: 
+ptcone: 2000 rejected: 1883693
+etcone: 5000 rejected: 148094
+invariant mass: 30 rejected: 549455
+transverse mom: 15 rejected: 697372
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.209435  Efficiency - muons: 0
+
+Cross section - electrons: 1916.48  Cross section - muons: -nan
+
+4.11124e+06:71769.6
+0:0
+
+Date: Thu Apr  2 23:35:23 2020
+
+parameters: 
+ptcone: 2000 rejected: 1883693
+etcone: 5000 rejected: 148094
+invariant mass: 30 rejected: 549455
+transverse mom: 15 rejected: 697372
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.209435  Efficiency - muons: 0
+
+Cross section - electrons: 1916.48  Cross section - muons: -nan
+
+4.11124e+06:71769.6
+0:0
+
+Date: Fri Apr  3 00:01:05 2020
+
+parameters: 
+ptcone: 2000 rejected: 1883693
+etcone: 5000 rejected: 148094
+invariant mass: 30 rejected: 549455
+transverse mom: 15 rejected: 697372
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.209435  Efficiency - muons: 0
+
+Cross section - electrons: 1916.48  Cross section - muons: -nan
+
+4.11124e+06:71769.6
+0:0
+
+Date: Fri Apr  3 00:19:10 2020
+
+parameters: 
+ptcone: 2000 rejected: 1419840
+etcone: 5000 rejected: 23608
+invariant mass: 30 rejected: 500662
+transverse mom: 15 rejected: 439127
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0  Efficiency - muons: 0.238101
+
+Cross section - electrons: -nan  Cross section - muons: 1950.4
+
+0:0
+4.67419e+06:547.176
+
+Date: Fri Apr  3 00:29:35 2020
+
+parameters: 
+ptcone: 2000 rejected: 72206
+etcone: 5000 rejected: 3530
+invariant mass: 30 rejected: 101958
+transverse mom: 15 rejected: 76104
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0121324  Efficiency - muons: 0.0129264
+
+Cross section - electrons: 1919.17  Cross section - muons: 1946.54
+
+238161:3829
+253760:532
+
+Date: Fri Apr  3 00:30:53 2020
+
+parameters: 
+ptcone: 2000 rejected: 271086
+etcone: 5000 rejected: 13768
+invariant mass: 30 rejected: 376563
+transverse mom: 15 rejected: 279119
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.043167  Efficiency - muons: 0.0483566
+
+Cross section - electrons: 1919.21  Cross section - muons: 1944.1
+
+847373:13605
+949296:3180
+
+Date: Fri Apr  3 00:32:45 2020
+
+parameters: 
+ptcone: 2000 rejected: 400875
+etcone: 5000 rejected: 20011
+invariant mass: 30 rejected: 553016
+transverse mom: 15 rejected: 405914
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0626164  Efficiency - muons: 0.0703901
+
+Cross section - electrons: 1918.65  Cross section - muons: 1943.04
+
+1.22917e+06:20091
+1.38184e+06:5378
+
+Date: Fri Apr  3 00:35:35 2020
+
+parameters: 
+ptcone: 2000 rejected: 637812
+etcone: 5000 rejected: 30115
+invariant mass: 30 rejected: 777223
+transverse mom: 15 rejected: 568802
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0967779  Efficiency - muons: 0.107991
+
+Cross section - electrons: 1919.05  Cross section - muons: 1941.45
+
+1.89976e+06:30663
+2.12e+06:9978
+
+Date: Fri Apr  3 16:02:55 2020
+
+parameters: 
+ptcone: 2000 rejected: 72206
+etcone: 5000 rejected: 3530
+invariant mass: 30 rejected: 101958
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0124944  Efficiency - muons: 0.0131536
+
+Cross section - electrons: 1914.4  Cross section - muons: 1944.91
+
+245266:4543
+258220:758
+
+Date: Fri Apr  3 16:04:08 2020
+
+parameters: 
+ptcone: 2000 rejected: 271086
+etcone: 5000 rejected: 13768
+invariant mass: 30 rejected: 376563
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0444718  Efficiency - muons: 0.0491842
+
+Cross section - electrons: 1914.07  Cross section - muons: 1942.26
+
+872987:16316
+965543:4145
+
+Date: Fri Apr  3 16:05:54 2020
+
+parameters: 
+ptcone: 2000 rejected: 400875
+etcone: 5000 rejected: 20011
+invariant mass: 30 rejected: 553016
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.064498  Efficiency - muons: 0.0715983
+
+Cross section - electrons: 1913.7  Cross section - muons: 1941.05
+
+1.2661e+06:23909
+1.40556e+06:6905
+
+Date: Fri Apr  3 16:08:35 2020
+
+parameters: 
+ptcone: 2000 rejected: 637812
+etcone: 5000 rejected: 30115
+invariant mass: 30 rejected: 777223
+transverse mom: 0 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0995918  Efficiency - muons: 0.109764
+
+Cross section - electrons: 1914.02  Cross section - muons: 1939.56
+
+1.955e+06:36592
+2.1548e+06:12230
+
+Date: Fri Apr  3 20:04:09 2020
+
+parameters: 
+ptcone: 2000 rejected: 72206
+etcone: 5000 rejected: 3530
+invariant mass: 30 rejected: 101958
+transverse mom: 5 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0124944  Efficiency - muons: 0.0131536
+
+Cross section - electrons: 1914.4  Cross section - muons: 1944.91
+
+245266:4543
+258220:758
+
+Date: Fri Apr  3 20:05:23 2020
+
+parameters: 
+ptcone: 2000 rejected: 271086
+etcone: 5000 rejected: 13768
+invariant mass: 30 rejected: 376563
+transverse mom: 5 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0444718  Efficiency - muons: 0.0491842
+
+Cross section - electrons: 1914.07  Cross section - muons: 1942.26
+
+872987:16316
+965543:4145
+
+Date: Fri Apr  3 20:07:08 2020
+
+parameters: 
+ptcone: 2000 rejected: 400875
+etcone: 5000 rejected: 20011
+invariant mass: 30 rejected: 553016
+transverse mom: 5 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.064498  Efficiency - muons: 0.0715983
+
+Cross section - electrons: 1913.7  Cross section - muons: 1941.05
+
+1.2661e+06:23909
+1.40556e+06:6905
+
+Date: Fri Apr  3 20:09:49 2020
+
+parameters: 
+ptcone: 2000 rejected: 637812
+etcone: 5000 rejected: 30115
+invariant mass: 30 rejected: 777223
+transverse mom: 5 rejected: 0
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0995918  Efficiency - muons: 0.109764
+
+Cross section - electrons: 1914.02  Cross section - muons: 1939.56
+
+1.955e+06:36592
+2.1548e+06:12230
+
+Date: Fri Apr  3 20:19:28 2020
+
+parameters: 
+ptcone: 2000 rejected: 72206
+etcone: 5000 rejected: 3530
+invariant mass: 30 rejected: 101958
+transverse mom: 10 rejected: 40466
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0123993  Efficiency - muons: 0.0130936
+
+Cross section - electrons: 1917.93  Cross section - muons: 1946.04
+
+243399:4068
+257042:605
+
+Date: Fri Apr  3 20:20:42 2020
+
+parameters: 
+ptcone: 2000 rejected: 271086
+etcone: 5000 rejected: 13768
+invariant mass: 30 rejected: 376563
+transverse mom: 10 rejected: 149484
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0441221  Efficiency - muons: 0.048972
+
+Cross section - electrons: 1917.87  Cross section - muons: 1943.57
+
+866123:14504
+961378:3480
+
+Date: Fri Apr  3 20:22:26 2020
+
+parameters: 
+ptcone: 2000 rejected: 400875
+etcone: 5000 rejected: 20011
+invariant mass: 30 rejected: 553016
+transverse mom: 10 rejected: 217643
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0640004  Efficiency - muons: 0.071287
+
+Cross section - electrons: 1917.36  Cross section - muons: 1942.52
+
+1.25634e+06:21363
+1.39945e+06:5818
+
+Date: Fri Apr  3 20:25:07 2020
+
+parameters: 
+ptcone: 2000 rejected: 637812
+etcone: 5000 rejected: 30115
+invariant mass: 30 rejected: 777223
+transverse mom: 10 rejected: 306587
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0988414  Efficiency - muons: 0.109306
+
+Cross section - electrons: 1917.66  Cross section - muons: 1940.97
+
+1.94027e+06:32699
+2.14581e+06:10633
+
+Date: Fri Apr  3 23:17:17 2020
+
+parameters: 
+ptcone: 2000 rejected: 72206
+etcone: 5000 rejected: 3530
+invariant mass: 30 rejected: 101958
+transverse mom: 15 rejected: 76104
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.0121324  Efficiency - muons: 0.0129264
+
+Cross section - electrons: 1919.17  Cross section - muons: 1946.54
+
+238161:3829
+253760:532
+
+Date: Fri Apr  3 23:18:29 2020
+
+parameters: 
+ptcone: 2000 rejected: 271086
+etcone: 5000 rejected: 13768
+invariant mass: 30 rejected: 376563
+transverse mom: 15 rejected: 279119
+phi: 3.14159 rejected: 0
+eta: 2.8 rejected: 0
+
+Efficiency - electrons: 0.043167  Efficiency - muons: 0.0483566
+
+Cross section - electrons: 1919.21  Cross section - muons: 1944.1
+
+847373:13605
+949296:3180
+

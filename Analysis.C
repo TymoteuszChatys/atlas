@@ -25,7 +25,7 @@ double mass_Z{91.1876};
 double pt_cone_lower{2000};
 double et_cone_higher{5000};
 double mass_deviation{30};
-double transverse_momentum_lower{30};
+double transverse_momentum_lower{10};
 double phi_range{3.1415926};
 double eta_range{2.8};
 

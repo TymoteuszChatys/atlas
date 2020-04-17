@@ -64,6 +64,7 @@
         "variant": "cpp",
         "Analysis-Z.C": "cpp",
         "Analysis-H.C": "cpp",
-        "CLoop.C": "cpp"
+        "CLoop.C": "cpp",
+        "Analysis_2.C": "cpp"
     }
 }

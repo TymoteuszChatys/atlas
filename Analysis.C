@@ -23,9 +23,9 @@ double mass_Z{91.1876};
 
 // CUTS APPLIED
 double pt_cone_lower{2000};
-double et_cone_higher{5000};
+double et_cone_higher{1500};
 double mass_deviation{30};
-double transverse_momentum_lower{45};
+double transverse_momentum_lower{25};
 double phi_range{3.1415926};
 double eta_range{2.8};
 
@@ -126,7 +126,7 @@ void CLoop::Fill(double weight) {
         }
 
         //etcone
-        if (lep_etcone20->at(i_pos)>et_cone_higher || lep_etcone20->at(i_neg)>et_cone_higher) {
+        if (lep_etcone20->at(i_pos)>=et_cone_higher || lep_etcone20->at(i_neg)>=et_cone_higher) {
             rejected = true;
             et++;
         }else{
